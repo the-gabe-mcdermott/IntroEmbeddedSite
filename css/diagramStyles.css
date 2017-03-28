@@ -1,16 +1,4 @@
-div.default_diagram
-{
-	display:block;
-	max-width: 25%;
-    height: auto;
-    margin: auto;
-
-}
-
-div.picture_wrap
-{
-	display:inline;
-	max-width:25%;
+.default_diagram {
+	min-width: 100%;
 	height: auto;
-	margin: auto;
 }
