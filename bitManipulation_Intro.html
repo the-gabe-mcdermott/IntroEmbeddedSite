@@ -89,11 +89,17 @@
 
 <h2> Bit by Bit </h2>
 <p>
-In embedded systems, individual bits can be very important.
-A single bit in memory can be mapped to control the output of a single pin. 
-A system timer may be enabled by setting a single bit in memory to a “1”. 
-The problem is that most microcontrollers do not let us set the value 
-of one bit in memory at a time. Usually groups of bits are read and overwritten together.
+In embedded systems, a single bit in memory 
+can be mapped to control the output of a single pin. 
+A single bit may be used to control when a hardware timer starts,
+or how an intterupt behaves. 
+However, most microcontrollers do not let you write the value 
+of one bit in memory at a time. 
+Groups of bits are read and overwritten together,
+usually in groups of 8, 16, or 32 bits at a time.
+
+So iadsf 
+
 These groups of bits all exist at same memory address. 
 </p>
 
