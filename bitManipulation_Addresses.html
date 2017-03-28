@@ -89,18 +89,30 @@
 
 <h2> Addresses </h2>
 <p>
-<strong>Addresses</strong> are how microcontrollers refer to specific 
-memory locations. Similar to an apartment building with unit numbers 
-to refer to specific apartments. 
+An <strong>Address</strong> is a number a microcontroller uses 
+refer to specific memory locations. 
+Similar to an apartment building with unit numbers to 
+refer to specific apartments. 
 </p>
 
-<div class=default_diagram><img src="textbook-content/images/bitManipulation/AddressesAsApartments.png" 
-	alt="Figure 1: A 5 story aprtment building with unit numbers writen on all ten apartments arragned in a neat grid."
-	width="500" height="300"></div>
+<div class=default_diagram>
+<img src="textbook-content/images/bitManipulation/AddressesAsApartments.png" 
+      	alt="Figure 1: A 5 story aprtment building with unit numbers writen on all ten apartments arragned in a neat grid."
+	width="500" height="300">
+</div>
+
 <p>
-An addresses will usually refer to a memory location that contains
- multiple bits. For example a <strong>Byte Addressable</strong>
- microcontroller contains eight bits at every address.
+Each address refers to a specific "bank" of 
+flip-flops in the memory hardware. 
+And of course, each flip-flop in the bank
+holds a single bit. 
+</p>
+
+<p>
+The number of flip flops, or bits, at a single address 
+depends on the microcontroller.
+<strong>Byte Addressable</strong> microcontrollers 
+contain eight bits at every address.
 </p>
 
 <div class=default_diagram><img src="textbook-content/images/bitManipulation/zerosAtApartments.png" 
@@ -109,14 +121,122 @@ An addresses will usually refer to a memory location that contains
 </div>
 <p> 
 Another common kind of microcontroller is a <strong>Word Addressable</strong> 
-microcontroller, where the manufacturer defines the number of bits in a word.
-Say, a Word Addressable microcontroller with 32-bit words would have 32 bits at every address.
+microcontroller. The number of bits in a "word" of 
+memory varies by microncontroller, and is given by the 
+manufacturer. 32-bit words are fairly typical.  
+A word addressable microcontroller with 32-bit words,
+contains, of course, 32 bits at every address.
 </p>
 
+<h3>The C Address Operator</h3>
+
 <p>
-Since it is only possible to read or write all the bits at an address, 
-something else is needed to change the state of a single bit.
-This something is a <strong> mask </strong>.
+Remember that an address, at the end of the day, 
+is just a number (just like a room number.)
+The difference is that instead of interpreting the number
+as a value, we interpret it as a reference to a location.
+</p>
+<p>
+The Address Operator (*), is used in C to specify 
+that a variable should be interpreted as a 
+location, or an address.
+</p>
+
+<h4>Example</h4>
+
+<div class=CodeExample>
+<pre>
+<code>
+void incrimentData(void)
+(
+	//The address operator (or "Star" operator)
+	//is placed in front of the variable name 
+	//to indicate the variable is an address.
+	uint32_t * addressOfData;
+	
+	//To read or write the variable alone,
+	//Use it without the address operator.
+	addressOfData = NULL;	
+	
+	//The address is not usually hard-coded
+	//like shown here.
+	//This is to demonstrate that the address is
+	//a normal variable that can be written to.
+	addressOfData = 0xFFA40043;
+
+	uint32_t data = 0;	
+	
+	//Data is read from the address by placing
+	// the address operator in front of the variable.
+	data = *addressOfData;
+
+	//This is also acceptable syntax.
+	data = * addressOfData;
+
+	//An example operation on the data.
+	data = data + 1;
+
+	//Data is written to the address the same way,
+	//with the address operator in front of the 
+	//variable name.
+	*addressOfData = data;
+)
+</code>
+</pre>
+</div>
+
+<p>
+In the above example, the address was hard-coded. 
+Usually, useful memory addresses will be defined for you
+in a header file that came from the microcontroller manufacturer.  
+</p>
+
+<div class=CodeExample>
+<pre>
+<code>
+#ifndef ADDRESSES_H
+#define ADDRESSES_H
+
+#define TIMER_REGISTER_ADDRESS 	0xFFA40043
+#define HEADER_REGISTER_ADDRESS 0xFFA30213
+//ect...
+
+#endif
+</code>
+</pre>
+</div>
+
+<p>
+You can then use the header file like this.
+</p>
+
+<div class=CodeExample>
+<pre>
+#include "Addresses.h"
+void incrimentData(void)
+{
+	uint32_t * timerReg = TIMER_REGISTER_ADDRESS;
+	uint32_t * headerReg = HEADER_REGISTER_ADDRESS;
+	
+	uint32_t data;
+
+	data = *timerReg;
+
+	data = data + 1;
+	
+	*headerReg = data;
+
+} 
+</code>
+</pre>
+</div>
+
+<p>
+Remember it is only possible to read or write 
+all the bits at an address at once,
+In order to set or clear a single bit in memory,
+We will need a way to "select" a single bit from a group of bits.
+This is done with a <strong> mask </strong>.
 
 </p>
 <a class="btn btn-default" href="bitManipulation_Masking.html">Next</a>

@@ -87,22 +87,41 @@
 
 <h1> Bit Manipulation </h1>
 
-<h2> Bit by Bit </h2>
+<div class=well><samp>
+"There are 10 kinds of people in the world: those who understand binary numerals, and those who don't." - Ian Stewart
+</samp></div>
 <p>
 In embedded systems, a single bit in memory 
 can be mapped to control the output of a single pin. 
 A single bit may be used to control when a hardware timer starts,
-or how an intterupt behaves. 
+or how an interrupt behaves. 
+</p>
+
+<p>
+Point being, there will be times when you will need to toggle the state of
+an individual bit stored in memory.
+</p>
+
+<p>
 However, most microcontrollers do not let you write the value 
 of one bit in memory at a time. 
 Groups of bits are read and overwritten together,
 usually in groups of 8, 16, or 32 bits at a time.
-
-So iadsf 
-
-These groups of bits all exist at same memory address. 
 </p>
 
+<h3> In this section, you will learn</h3>
+
+<ol>
+	<li>How <strong>addresses</strong> work, and how to use them to 
+	read or write a group of bits in memory.</li>
+	<li>What a <strong>mask </strong> is, and how it is used to "select" 
+	individual bits out of a group of bits.</li>
+	<li>What the different C <strong> Bitwise Operators </strong> are,
+	and how they are used with masks to set or clear individual bits in
+	a group of bits. </li>
+	<li>How to apply these concepts to set or clear a bit 
+	in a C code example.</li>
+</ol>	
 <a class="btn btn-default" href="bitManipulation_Addresses.html">Next</a>
 
 </div>

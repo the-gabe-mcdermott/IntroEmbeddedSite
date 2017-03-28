@@ -101,6 +101,7 @@ The remaining 6 LEDS will show a kind of bar graph indicating the speed of the c
 A member of your team has started a function to toggle the 2nd LED, indicating an active connection to the internet. 
 </p>
 
+<div class=CodeExample>
 <pre>
 <code>
 /*************************************************************************
@@ -126,6 +127,7 @@ void DisplayInternetStatus(uint8_t internet_connected_true, uint32_t * led_displ
 }
 </pre>
 </code>
+</div>
 
 <p>
 Your job is to finish the function, turning on the LED when the link is active, and turning it off otherwise. 
@@ -136,7 +138,7 @@ since they display other information.
 <p>
 	To accomplish this, you could write the following function.
 </p>
-
+<div class="CodeExample">
 <pre>
 <code>
 /******************************************************************
@@ -182,12 +184,13 @@ void Bit2On(uint32_t * led_display_address)
 }
 </code>
 </pre>
-
+</div>
 
 <p>
 In order to turn that single LED off again, you could write this function.
 </p>
 
+<div class=CodeExample>
 <pre>
 <code>
 /******************************************************************
@@ -228,11 +231,13 @@ void Bit2Off(uint32_t * led_display_address)
 }
 </code>
 </pre>
+</div>
 
 <p>
 Then you can add your two functions to the code your team member started.
 </p>
 
+<div class=CodeExample>
 <pre>
 <code>
 /*************************************************************************
@@ -257,14 +262,13 @@ void DisplayInternetStatus(uint8_t internet_connected_true, uint32_t * led_displ
 }
 </pre>
 </code>
+</div>
 
 <p>
 And that is how to toggle individual bits in memory when you can only address 8, or even 32 bits. 
 </p>
 
-<div class=well><samp>
-“There are 10 kinds of people in the world: those who understand binary numerals, and those who don't.” - Ian Stewart
-</samp></div>
+
 
 </div>
 <div class=license>
