@@ -1,0 +1,34 @@
+//////TODOS Before Spring Break//////
+-Update Glossary to include datasheets terms
+-Update Glossary to include bit manipulation terms
+-Update Glossary to include Intro page terms.
+-Update Glossary to include electronics terms.
+
+-Edit Intro page pass 1
+-Edit Intro page pass 2
+-Edit Datasheets page pass 3
+-Break up the Datasheets section. Parts to way too big.
+-Edit Electricity page pass 2
+-Edit Electricity page pass 3
+-Make images for Electricity page equations
+
+-Eliminate "Updated" section
+
+-Generate Intro Page assets
+-Generate Electricity page assets
+
+-Add Page Margins
+-Add Maxiumim "Column" width
+-Get bit manipulation diagrams to format so all of it is visible in mobile.
+
+-Inject Header via javascript
+
+-Move site to github
+
+//////Nice to Haves!//////
+
+-Add "Introduction to C" page.
+-Add "Hello Arduino Uno" page.
+-Add Site README.txt for gitlabs/github
+-Add link to send me an email for feedback
+-Add link to subsribe to page updates.
