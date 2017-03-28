@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
 
@@ -30,7 +30,7 @@
 <body>
     <div id="wrapper">
 
-          <!-- Sidebar -->
+         <!-- Sidebar -->
         <div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
@@ -49,6 +49,26 @@
 					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
 				</li>
 				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Addresses.html">Addresses</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Masking.html">Masking</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_BitwiseOperations.html">Bitwise Operators</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_CodeExample.html">Example</a>
+					</div>
+				</li>
+				<li>
 					<a href="glossaryAndIndex.html">Glossary/Index</a>
 				</li>
 			</ul>
@@ -63,32 +83,34 @@
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 						
 						<div class=chapterBody>
-	<h1> Glossary and Index</h1>
-		<table style="width:100%">
-		<tr>
-			<th>Term</th>
-			<th>Referances</th>
-			<th>Definition</th>
-		</tr>
-		<tr>
-			<td>Binary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation,</a><a href="bitManipulation.html"> Demo Page 0</a>
-			<td>An operator that takes two operands.</td> 
-		</tr>
-		<tr>
-			<td>Unary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation</a>
-			<td>An operator that takes one operand.</td> 
-		</tr>
-		</table>
 	
 
-	
-	
-						<div class=license>
-						<p>
-						&copy 2017
-						</p>
+<h1> Bit Manipulation </h1>
+
+<h2> Bit by Bit </h2>
+<p>
+In embedded systems, individual bits can be very important.
+A single bit in memory can be mapped to control the output of a single pin. 
+A system timer may be enabled by setting a single bit in memory to a “1”. 
+The problem is that most microcontrollers do not let us set the value 
+of one bit in memory at a time. Usually groups of bits are read and overwritten together.
+These groups of bits all exist at same memory address. 
+</p>
+
+<a href="bitManipulation_Addresses.html">Bit Manipulation - Addresses</a>
+
+</div>
+
+
+<div class=license>
+<p>
+	&copy 2017
+</p>
+</div>
+
+						
+						
+						
                     </div>
                 </div>
             </div>

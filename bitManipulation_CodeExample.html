@@ -46,7 +46,27 @@
 					<a href="dataSheets.html">Data Sheets</a>
 				</li>
 				<li>
-					<a href="bitManipulation.html">Bit Manipulation</a>
+					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Addresses.html">Addresses</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Masking.html">Masking</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_BitwiseOperations.html">Bitwise Operators</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_CodeExample.html">Example</a>
+					</div>
 				</li>
 				<li>
 					<a href="glossaryAndIndex.html">Glossary/Index</a>
@@ -65,317 +85,9 @@
 						<div class=chapterBody>
 	
 
-<h1> How to Manipulate Bits </h1>
-	
-<p>
-I assume you are already familiar with binary and hexadecimal numbers. If not, learn about those before reading this chapter.
-</p>
+<h1> Bit Manipulation </h1>
 
-<h2> Why Does Setting or Clearing Bits Matter? </h2>
-
-<p>
-In embedded systems, individual bits can be very important.
-A single bit in memory can be mapped to control the output of a single pin. A system timer may be enabled by setting a single bit in memory to a “1”. The problem is that most microcontrollers do not let us set the value of one bit in memory at a time. We must set a value to all the bits at the address. 
-</p>
-
-<p>
-<strong>Addresses</strong> are how microcontrollers refer to specific memory locations. Similar to an apartment building with unit numbers to refer to specific apartments. 
-</p>
-
-<div class=default_diagram><img src="textbook-content/images/bitManipulation/AddressesAsApartments.png" 
-	alt="Figure 1: A 5 story aprtment building with unit numbers writen on all ten apartments arragned in a neat grid."
-	width="500" height="300"></div>
-<p>
-An addresses will usually refer to a memory location that contains multiple bits. For example a <strong>Byte Addressable</strong> microcontroller contains eight bits at every address.
-</p>
-
-<div class=default_diagram><img src="textbook-content/images/bitManipulation/zerosAtApartments.png" 
-	alt="Figure 2: Similar to figure 1, except instead of apartment faces in a grid, 8 zeros are at each cell in the 2x5 grid."
-	width="500" height="300">
-</div>
-<p> 
-Another common kind of microcontroller is a <strong>Word Addressable</strong> microcontroller, where the manufacturer defines the number of bits in a word. Say, a Word Addressable microcontroller with 32-bit words would have 32 bits at every address.
-</p>
-
-<p>
-When I start writing values into memory, I use an addresses to specify where I want the data written. However, I have no way of writing a value to a single bit at an address. It’s kind of like how an apartment number can let me find a specific apartment to deliver a package to, but not a specific room in that apartment. 
-This make it impossible to write a single bit to say, turn on a system timer, without writing to the other bits at that address (which may control other things I don’t want to mess with.) The trick to get around this can be described in three steps.
-</p>
-<ol type=”1”>
-	<li> Read the value at the memory location you are interested in. Store the value in some temporary variable  </li>
-	<li> Perform a <strong>bitwise operation</strong> on the value to change only the bit or bits you are interested in changing, while leaving the rest at their previous value.</li>
-	<li> Write the value back to the memory location. </li>
-</ol>
-
-<p>
-You are still writing to all the bits at the address. But the bit you need changed gets assigned its new value, and the other bits at the address get written to the same value they had before. 
-</p>
-
-
-<h2> Bitwise Operations </h2>
-<p>
-Bitwise operations are just like ordinary mathematical operations (+, -, ect.). They take two numbers as an input (also known as two <strong> operands </strong>), and does something to them to create a result.  
-</p>
-
-<h2>C Boolean Logic Comparison Operators</h2>
-<p>
-There are three C operators for doing Boolean logic comparisons between two numbers, bit by bit. For example, the OR operator, written with the syntax “C = A | B;”, takes the first bit in variable A and the first bit in variable B, and performs a logical OR on the two bits. The result is stored in the first bit of C. Then, the second bit of A is compared against the second bit of B, and the result stored in the second bit of C. The same for the third bit, fourth, and so on.  
-</p>
-
-<table style="width:100%">
-<tr>
-	<th>Operator Name</th>
-	<th>C Syntax</th>
-</tr>
-  
-<tr>
-    <td>OR</td>
-    <td>A | B</td>
-</tr>
-  
-<tr>
-    <td>AND</td>
-    <td>A & B</td>
-</tr>
-
-<tr>
-	<td>EXCLUSIVE OR</td>
-	<td>A ^ B</td>
-</tr>
-  
-</tr>
-</table>
-
-<h3>Or Operator Example</h3>
-
-<pre><code>
-	A = 4’b0011;
-	B = 4’b1010;
-
-	C = A | B; 
-	//C => 4’b1011
-</code>
-</pre>
-
-
-<h3>And Operator Example</h3>
-
-<pre>
-<code>
-	A = 4’b0011;
-		
-	B = 4’b1010;
-
-	C = A & B;
-	//C => 4’b0010
-</code>
-</pre>
-
-<h3>Exclusive Or Example</h3>
-
-<pre>
-<code>
-	A = 4’b0011;
-	B = 4’b1010;
-	
-	C = A ^ B;
-	//C => 4’b1001
-</code>
-</pre>
-
-<h2>Shift Operators</h2>
-<p>
-	Shift operators shift the bits in the first operand by the number of positions specified by the second operand. There are left shift and right shift operators. You might be wondering what happens to the bits at the furthest right and left of the number. In a left shift, the left most bit is lost, and the right most bit gets assigned a zero. In a right shift, the right most bit is lost, and the left most bit gets assigned a zero. 
-</p>
-
-<table style="width:100%">
-  
-<tr>
-    <th>Operator Name</th>
-    <th>C Syntax</th>
-</tr>
-
-<tr>
-	<td>LEFT SHIFT</td>
-	<td>A << B</td>
-</tr>
-
-<tr>
-	<td>RIGHT SHIFT</td>
-	<td>A >> B</td>
-</tr>
-</table>
-
-<h3>Left Shift Example</h3>
-
-<pre>
-<code>
-	A = 4’b0110;
-	B = 1;
-	
-	C = A << B;
-	//C => 4’b1100;
-	//Additional shifts cause bits to “roll off”
-	C = C << B;
-	//C => 4’b1000;
-</code>
-</pre>
-
-
-<h3>Right Shift Example</h3>
-
-<pre>
-<code>
-	A = 4’b0110;
-	B = 1;
-
-	C = A >> B;
-	//C => 4’b0011;
-	//Additional shifts cause bits to “roll off”
-	C = C >> B;
-	//C => 4’b0001;
-</code>
-</pre>
-
-
-<h2>Negation Operator</h2>
-<p>
-Negation is performed as a unary operation. That is, it only has one operand. The bits in the operand are all flipped to their opposite.
-</p>
-
-<table style="width:100%">
-<tr>
-	<th>Operator Name</th>
-	<th>Operator Synatx</th> 
-</tr>
-
-<tr>
-    <td>ONES COMPLIMENT aka NOT</td>
-    <td>~A</td>
-</tr>
-</table>
-
-<h3>Ones Compliment Example</h3>
-
-<pre>
-<code>	
-	A = 0’b0011;
-	
-	C = ~A;
-	//C => 4’b1100;
-</code>
-</pre>
-
-
-<h2> Bitwise Assignment Operators </h2>
-<p>
-
-Assignment Operators also exist, which assume that the variable on the left hand side is both the first operand, and also the variable to store the result in. The Bitwise Assignment Operators Are:
-</p>
-	
-<table style="width:100%">
-	
-<tr>
-	<th>Operator Name</th>
-	<th>Operator Syntax</th> 
-	
-</tr>
-
-<tr>
-	<td>OR EQUALS</td>
-	<td>|= A</td> 
-</tr>
-	
-<tr>
-	<td>AND EQUALS</td>
-	<td>&= A</td> 
-</tr>
-
-<tr>
-	<td>EXCLUSIVE OR EQUALS</td>
-	<td>^= A</td>
-</tr>
-	
-<tr>
-	<td>LEFT SHIFT EQUALS</td>
-	<td>>>= A</td>
-</tr>
-
-<tr>
-	<td>RIGHT SHIFT EQUALS</td>
-	<td><<= A</td>
-</tr>
-</table>
-	
-
-<h3>Or Equals Example</h3>
-
-<pre>
-<code>
-	A = 4’b0011;
-	B = 4’b1010;
-	
-	A |= B;  
-	//A => 4’b1011;
-</code>
-</pre>
-
-	
-<h3>And Operator Example</h3>
-
-<pre>
-<code>
-	A = 4’b0011;
-	B = 4’b1010;
-
-	A =& B;
-	//C => 4’b0010
-</code>
-</pre>
-
-<h3>Exclusive Or Example</h3>
- 
-<pre>
-<code>
-	A = 4’b0011;
-	B = 4’b1010;
-
-	A =^ B;
-	//A => 4’b1001
-</code>
-</pre>
-
-<h3>Left Shift Example</h3>
-<code>
-<pre>
-	A = 4’b0110;
-	B = 1;
-
-	A =<< B;
-	//A => 4’b1100;
-	//Additional shifts cause bits to “roll off”
-	A =<< B;
-	//A => 4’b1000;
-</code>
-</pre>
-
-	
-<h3>Right Shift Example</h3>
-
-<pre>
-<code>
-	A = 4’b0110;
-	B = 1;
-
-	A =>> B;
-	//A => 4’b0011;
-	//Additional shifts cause bits to “roll off”
-	A =>> B;
-	//A => 4’b0001;
-	</code>
-	</pre>
-	
-<h2> Putting Bitwise Operators to Work</h2>
+<h2> Example</h2>
 
 <p>
 To understand how to use bitwise operators to assign a value to only one bit at an address, I'll describe an example.

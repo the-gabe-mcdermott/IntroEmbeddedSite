@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
 
@@ -30,7 +30,7 @@
 <body>
     <div id="wrapper">
 
-          <!-- Sidebar -->
+         <!-- Sidebar -->
         <div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
@@ -49,6 +49,26 @@
 					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
 				</li>
 				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Addresses.html">Addresses</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Masking.html">Masking</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_BitwiseOperations.html">Bitwise Operators</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_CodeExample.html">Example</a>
+					</div>
+				</li>
+				<li>
 					<a href="glossaryAndIndex.html">Glossary/Index</a>
 				</li>
 			</ul>
@@ -63,32 +83,54 @@
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 						
 						<div class=chapterBody>
-	<h1> Glossary and Index</h1>
-		<table style="width:100%">
-		<tr>
-			<th>Term</th>
-			<th>Referances</th>
-			<th>Definition</th>
-		</tr>
-		<tr>
-			<td>Binary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation,</a><a href="bitManipulation.html"> Demo Page 0</a>
-			<td>An operator that takes two operands.</td> 
-		</tr>
-		<tr>
-			<td>Unary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation</a>
-			<td>An operator that takes one operand.</td> 
-		</tr>
-		</table>
 	
 
-	
-	
-						<div class=license>
-						<p>
-						&copy 2017
-						</p>
+<h1> Bit Manipulation </h1>
+
+<h2> Addresses </h2>
+<p>
+<strong>Addresses</strong> are how microcontrollers refer to specific 
+memory locations. Similar to an apartment building with unit numbers 
+to refer to specific apartments. 
+</p>
+
+<div class=default_diagram><img src="textbook-content/images/bitManipulation/AddressesAsApartments.png" 
+	alt="Figure 1: A 5 story aprtment building with unit numbers writen on all ten apartments arragned in a neat grid."
+	width="500" height="300"></div>
+<p>
+An addresses will usually refer to a memory location that contains
+ multiple bits. For example a <strong>Byte Addressable</strong>
+ microcontroller contains eight bits at every address.
+</p>
+
+<div class=default_diagram><img src="textbook-content/images/bitManipulation/zerosAtApartments.png" 
+	alt="Figure 2: Similar to figure 1, except instead of apartment faces in a grid, 8 zeros are at each cell in the 2x5 grid."
+	width="500" height="300">
+</div>
+<p> 
+Another common kind of microcontroller is a <strong>Word Addressable</strong> 
+microcontroller, where the manufacturer defines the number of bits in a word.
+Say, a Word Addressable microcontroller with 32-bit words would have 32 bits at every address.
+</p>
+
+<p>
+Since it is only possible to read or write all the bits at an address, 
+something else is needed to change the state of a single bit.
+This something is a <strong> mask </strong>.
+
+</p>
+<a href="bitManipulation_Masking.html">Bit Manipulation - Masking</a>
+
+</div>
+<div class=license>
+<p>
+	&copy 2017
+</p>
+</div>
+
+						
+						
+						
                     </div>
                 </div>
             </div>

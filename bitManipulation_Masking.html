@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
 
@@ -30,7 +30,7 @@
 <body>
     <div id="wrapper">
 
-          <!-- Sidebar -->
+         <!-- Sidebar -->
         <div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
@@ -49,6 +49,26 @@
 					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
 				</li>
 				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Addresses.html">Addresses</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Masking.html">Masking</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_BitwiseOperations.html">Bitwise Operators</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_CodeExample.html">Example</a>
+					</div>
+				</li>
+				<li>
 					<a href="glossaryAndIndex.html">Glossary/Index</a>
 				</li>
 			</ul>
@@ -63,32 +83,61 @@
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 						
 						<div class=chapterBody>
-	<h1> Glossary and Index</h1>
-		<table style="width:100%">
-		<tr>
-			<th>Term</th>
-			<th>Referances</th>
-			<th>Definition</th>
-		</tr>
-		<tr>
-			<td>Binary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation,</a><a href="bitManipulation.html"> Demo Page 0</a>
-			<td>An operator that takes two operands.</td> 
-		</tr>
-		<tr>
-			<td>Unary Operator</td>
-			<td><a href="bitManipulation.html">Bit Manipulation</a>
-			<td>An operator that takes one operand.</td> 
-		</tr>
-		</table>
 	
 
+<h1> Bit Manipulation </h1>
+
+<h2>Masking</h2>
+<p>
+When I start writing values into memory, 
+I use an addresses to specify where I want the data written.
+However, I have no way of writing a value to a single bit at an address.
+It’s kind of like how an apartment number can let me 
+find a specific apartment to deliver a package to,
+but not a specific room in that apartment. 
+This makes it impossible to write a single bit to say, 
+turn on a system timer, without writing to the other 
+bits at that address (which may control other things 
+I don’t want to mess with.) The trick to get around 
+this can be described in three steps.
+</p>
+<ol type=”1”>
+	<li> 
+	Read the value at the memory location you are interested in. 
+	Store the value in some temporary variable.
+	</li>
 	
+	<li> 
+	Perform a <strong>bitwise operation</strong> 
+	on the value and a <strong> mask </strong>.
+	The mask will specify the bit or bits you 
+	want to change. The bitwise operation will change those bits
+	while leaving the rest of the bits at their previous value.
+	</li>
 	
-						<div class=license>
-						<p>
-						&copy 2017
-						</p>
+	<li> Write the variable back to the memory location. </li>
+</ol>
+
+<p> 
+Put an example here 
+</p>
+
+<p>
+	There are several bitwise operators you can use to fidget with bits, 
+	and get them to do exactly what you want.
+</p>
+<a href="bitManipulation_BitwiseOperations.html">Bit Manipulation - Bitwise Operators</a>
+
+</div>
+<div class=license>
+<p>
+	&copy 2017
+</p>
+</div>
+
+						
+						
+						
                     </div>
                 </div>
             </div>
