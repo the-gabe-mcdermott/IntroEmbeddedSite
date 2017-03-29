@@ -138,8 +138,7 @@ as a value, we interpret it as a reference to a location.
 </p>
 <p>
 The Address Operator (*), is used in C to specify 
-that a variable should be interpreted as a 
-location, or an address.
+that a variable should be interpreted as an address.
 </p>
 
 <h4>Example</h4>
@@ -151,7 +150,7 @@ void incrimentData(void)
 (
 	//The address operator (or "Star" operator)
 	//is placed in front of the variable name 
-	//to indicate the variable is an address.
+	//to indicte the variable is an address.
 	uint32_t * addressOfData;
 	
 	//To read or write the variable alone,
@@ -207,11 +206,12 @@ in a header file that came from the microcontroller manufacturer.
 </div>
 
 <p>
-You can then use the header file like this.
+It is a good idea to use these definitions, as it improves code readability, and will make the code a little more portable.
 </p>
 
 <div class=CodeExample>
 <pre>
+<code>
 #include "Addresses.h"
 void incrimentData(void)
 {

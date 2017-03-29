@@ -89,42 +89,115 @@
 
 <h2>Masking</h2>
 <p>
-When I start writing values into memory, 
-I use an addresses to specify where I want the data written.
-However, I have no way of writing a value to a single bit at an address.
-It’s kind of like how an apartment number can let me 
-find a specific apartment to deliver a package to,
-but not a specific room in that apartment. 
-This makes it impossible to write a single bit to say, 
-turn on a system timer, without writing to the other 
-bits at that address (which may control other things 
-I don’t want to mess with.) The trick to get around 
-this can be described in three steps.
+Addresses let you read data into and 
+out of memory. However,
+you are required to read or write all
+the bits at the address at once.
 </p>
-<ol type=”1”>
+
+<p>
+How do you set or clear and individual
+bit stored in a whole byte of memory?
+</p>
+
+<p>
+The trick is to use a <strong> mask</strong>
+and a<strong>bitwise operator</strong>
+to "select" for an individual bit.
+</p>
+
+<h3> Using a Mask</h3>
+<p>
+A mask is a variable (usually a constant). 
+The variable holds a number that when read 
+in binary, has specific bit positions set,
+in order to "select" those bits.
+</p>
+
+<div class=CodeExample>
+<pre>
+<code>
+uint8_t const firstWriteMask = 0x02;
+//Here is the above mask shown in binary.
+//firstWriteMask = 0000 0010
+
+
+//Masks can also be used to select 
+//multiple bits at a time.
+//This mask "selects" the first bit
+//And the last four bits.
+uint8_t const secondWriteMask = 0xF1;
+//Here is its representation in binary
+//secondWriteMask = 1111 0001
+</code>
+</pre>
+</div>
+
+<p>
+Each bit that is set 
+to a "1" in these masks will be used 
+with a bitwise operation to "select" 
+or <strong> mask </strong> that equivalent bit 
+position in another variable.
+</p>
+
+<p>
+Say you wanted to set the second bit of some number to a 1. 
+You would use a mask to select for the second bit (0x02), and
+perform an AND operation on the number to set it to a 1.
+</p>
+
+<table style="width:50%">
+	<tr>
+		<th>Number</th>
+		<th>1111 0110</th>
+	</tr>
+	<tr>
+		<th>Mask</th>
+		<th>0000 0010</th>
+	</tr>
+	<tr>
+		<th>AND</th>
+	</tr>
+	<tr>
+		<th>Result</th>
+		<th>0000 0010</th>
+	</tr>
+</table>
+
+<h3> Writing to A Single Bit of Memory </h3>
+<p>
+A mask can be used with a bitwise operator 
+(more on those in the next section), to set
+a specific bit in a variable. 
+In order to set a bit in memory, use these
+steps.
+</p>
+<ol type="1"�>
 	<li> 
-	Read the value at the memory location you are interested in. 
+	Read the value at the memory 
+	location you are interested in. 
 	Store the value in some temporary variable.
 	</li>
 	
 	<li> 
-	Perform a <strong>bitwise operation</strong> 
-	on the value and a <strong> mask </strong>.
-	The mask will specify the bit or bits you 
-	want to change. The bitwise operation will change those bits
-	while leaving the rest of the bits at their previous value.
+	Perform a bitwise operation on the 
+	value and a mask.
+	The mask will specify
+       	the bit or bits you 
+	want to change. The bitwise 
+	operation will change those bits
+	while leaving the rest of the bits
+       	at their previous value.
 	</li>
 	
-	<li> Write the variable back to the memory location. </li>
+	<li> Write the variable back to the
+	       	memory location. </li>
 </ol>
 
-<p> 
-Put an example here 
-</p>
-
 <p>
-	There are several bitwise operators you can use to fidget with bits, 
-	and get them to do exactly what you want.
+	There are several bitwise operators you can use with this process
+       	to fidget with bits and get them to the exact values you want. 
 </p>
 <a class="btn btn-default" href="bitManipulation_BitwiseOperations.html">Next</a>
 
