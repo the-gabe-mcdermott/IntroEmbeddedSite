@@ -86,21 +86,38 @@
 
 <h1> Bit Manipulation </h1>
 
-<h2> Bitwise Operations </h2>
+<h2> Bitwise Operators </h2>
+
 <p>
-Bitwise operations are just like ordinary mathematical operations (+, -, ect.). 
-They take two numbers as an input (also known as two <strong> operands </strong>), 
-and does something to them to create a result.  
+Bitwise operators are just like ordinary
+mathematical operators (+, -, etc.) 
+They take two numbers as input 
+(also known as two <strong> operands </strong>), 
+and do something to them to create a result.  
 </p>
+
+<p>This section will provide an overview of all
+the bitwise operators available in C.
+The next section will elaborate on using 
+bitwise operators with masks to set or clear bits,
+using an example.
+</p>
+
 
 <h2>C Boolean Logic Comparison Operators</h2>
 <p>
-There are three C operators for doing Boolean logic comparisons between two numbers, 
-bit by bit. For example, the OR operator, written with the syntax “C = A | B;”,
- takes the first bit in variable A and the first bit in variable B, and performs 
- a logical OR on the two bits. The result is stored in the first bit of C. 
- Then, the second bit of A is compared against the second bit of B, and the
- result stored in the second bit of C. The same for the third bit, fourth, and so on.  
+There are three C operators for doing 
+Boolean logic comparisons between two numbers, 
+bit by bit. For example, the OR operator,
+written with the syntax "C = A | B;"�,
+ takes the first bit in variable A and
+ the first bit in variable B, and performs 
+ a logical OR on the two bits. 
+ The result is stored in the first bit of C. 
+ Then, the second bit of A is compared 
+ against the second bit of B, and the
+ result stored in the second bit of C. 
+ The same for the third bit, fourth, and so on.  
 </p>
 
 <table style="width:100%">
@@ -130,11 +147,11 @@ bit by bit. For example, the OR operator, written with the syntax “C = A | B;�
 <h3>Or Operator Example</h3>
 
 <pre><code>
-	A = 4’b0011;
-	B = 4’b1010;
+	A = 0011;
+	B = 1010;
 
 	C = A | B; 
-	//C => 4’b1011
+	//C => 1011
 </code>
 </pre>
 
@@ -143,12 +160,12 @@ bit by bit. For example, the OR operator, written with the syntax “C = A | B;�
 
 <pre>
 <code>
-	A = 4’b0011;
+	A = 0011;
 		
-	B = 4’b1010;
+	B = 1010;
 
 	C = A & B;
-	//C => 4’b0010
+	//C => 0010
 </code>
 </pre>
 
@@ -156,19 +173,23 @@ bit by bit. For example, the OR operator, written with the syntax “C = A | B;�
 
 <pre>
 <code>
-	A = 4’b0011;
-	B = 4’b1010;
+	A = 0011;
+	B = 1010;
 	
 	C = A ^ B;
-	//C => 4’b1001
+	//C => 1001
 </code>
 </pre>
 
-<h2>Shift Operators</h2>
+<h2>C Shift Operators</h2>
+
 <p>
 	Shift operators shift the bits in the first operand by the 
-	number of positions specified by the second operand.
+	number of positions given in the second operand.
 	There are left shift and right shift operators. 
+</p>
+
+<p>
 	You might be wondering what happens to the bits at the furthest 
 	right and left of the number. In a left shift, the left most 
 	bit is lost, and the right most bit gets assigned a zero. 
@@ -198,14 +219,14 @@ bit by bit. For example, the OR operator, written with the syntax “C = A | B;�
 
 <pre>
 <code>
-	A = 4’b0110;
+	A = 0110;
 	B = 1;
 	
 	C = A << B;
-	//C => 4’b1100;
-	//Additional shifts cause bits to “roll off”
+	//C => 1100;
+	//Additional shifts cause bits to "roll off"�
 	C = C << B;
-	//C => 4’b1000;
+	//C => 1000;
 </code>
 </pre>
 
@@ -214,19 +235,19 @@ bit by bit. For example, the OR operator, written with the syntax “C = A | B;�
 
 <pre>
 <code>
-	A = 4’b0110;
+	A = 0110;
 	B = 1;
 
 	C = A >> B;
-	//C => 4’b0011;
-	//Additional shifts cause bits to “roll off”
+	//C => 0011;
+	//Additional shifts cause bits to "roll off"�
 	C = C >> B;
-	//C => 4’b0001;
+	//C => 0001;
 </code>
 </pre>
 
 
-<h2>Negation Operator</h2>
+<h2>The C Negation Operator</h2>
 <p>
 Negation is performed as a unary operation. That is, it only has one operand. 
 The bits in the operand are all flipped to their opposite.
@@ -248,15 +269,15 @@ The bits in the operand are all flipped to their opposite.
 
 <pre>
 <code>	
-	A = 0’b0011;
+	A = 0011;
 	
 	C = ~A;
-	//C => 4’b1100;
+	//C => 1100;
 </code>
 </pre>
 
 
-<h2> Bitwise Assignment Operators </h2>
+<h2>C Bitwise Assignment Operators </h2>
 <p>
 
 Assignment Operators also exist, which assume that the variable on the left 
@@ -303,11 +324,11 @@ hand side is both the first operand, and also the variable to store the result i
 
 <pre>
 <code>
-	A = 4’b0011;
-	B = 4’b1010;
+	A = 0011;
+	B = 1010;
 	
 	A |= B;  
-	//A => 4’b1011;
+	//A => 1011;
 </code>
 </pre>
 
@@ -316,11 +337,11 @@ hand side is both the first operand, and also the variable to store the result i
 
 <pre>
 <code>
-	A = 4’b0011;
-	B = 4’b1010;
+	A = 0011;
+	B = 1010;
 
 	A =& B;
-	//C => 4’b0010
+	//C => 0010
 </code>
 </pre>
 
@@ -328,25 +349,25 @@ hand side is both the first operand, and also the variable to store the result i
  
 <pre>
 <code>
-	A = 4’b0011;
-	B = 4’b1010;
+	A = 0011;
+	B = 1010;
 
 	A =^ B;
-	//A => 4’b1001
+	//A => 1001
 </code>
 </pre>
 
 <h3>Left Shift Example</h3>
 <code>
 <pre>
-	A = 4’b0110;
+	A = 0110;
 	B = 1;
 
 	A =<< B;
-	//A => 4’b1100;
-	//Additional shifts cause bits to “roll off”
+	//A => 1100;
+	//Additional shifts cause bits to "roll off"�
 	A =<< B;
-	//A => 4’b1000;
+	//A => 1000;
 </code>
 </pre>
 
@@ -355,14 +376,14 @@ hand side is both the first operand, and also the variable to store the result i
 
 <pre>
 <code>
-	A = 4’b0110;
+	A = 0110;
 	B = 1;
 
 	A =>> B;
-	//A => 4’b0011;
-	//Additional shifts cause bits to “roll off”
+	//A => 0011;
+	//Additional shifts cause bits to "roll off"�
 	A =>> B;
-	//A => 4’b0001;
+	//A => 0001;
 </code>
 </pre>
 
