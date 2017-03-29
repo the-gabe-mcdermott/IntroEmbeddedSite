@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">S
+<html lang="en">
 <meta charset="utf-8">
 
 <head>
@@ -13,11 +13,11 @@
     <title>Introduction to Embedded Systems- Chapter 5: Bit Manipulation</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	<link href="css/textBodyStyles.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+	<link href="/css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,30 +30,37 @@
 <body>
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand">
-					<a href="index.html">Intro Emb. Sys.</a>
-                </li>
-				<li>
-					<a href="intro.html">Introduction</a>
-				</li>
-				<li>
-					<a href="introToElectricity.html">Crash Course in Electricity</a>
-				</li>
-				<li>
-					<a href="dataSheets.html">Data Sheets</a>
-				</li>
-				<li>
-					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
-				</li>
-				<li>
-					<a href="glossaryAndIndex.html">Glossary/Index</a>
-				</li>
-			</ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+	
+	<li class="sidebar-brand">
+		<a href="/index.html">
+		Intro Emb. Sys.</a>
+	</li>
+
+	<li> 
+		<a href="/pages/intro/intro.html">
+		Introduction</a>
+	</li>
+
+	<li>
+		<a href="/pages/introToElectricity/introToElectricity.html">
+		Crash Course in Electricity</a>
+	</li>
+                                
+	<li>
+		<a href="/pages/dataSheets/dataSheets.html">
+		Data Sheets</a>
+	</li>
+
+	<li>
+		<a href="/pages/bitManipulation/bitManipulation.html">
+		Bit Manipulation</a>
+	</li>
+	</ul>
+</div>
+<!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -67,8 +74,8 @@
 	<h2> What is an embedded system? </h2>
 	<p>
 	At its simplest, an embedded system is a computer inside something else. 
-	‚ÄúComputer‚Äù here means something a little different then what people normally 
-	mean when they say ‚Äúcomputer‚Äù. 
+	ìComputerî here means something a little different then what people normally 
+	mean when they say ìcomputerî. 
 	</p>
 
 	<p>
@@ -96,7 +103,7 @@
 	<!--
 	Draw a spectrum
 		
-		pure electronics ‚Üí embedded system ‚Üí general purpose computer
+		pure electronics ? embedded system ? general purpose computer
 		no processor	   processor, one or two programs	os      many programs
 
 	Put different products on this spectrum
@@ -139,19 +146,19 @@
 	<h2>Real Time Constraints</h2>
 	
 	<p>
-	This factor is closely related to system speed. Real time constraints are events in the real world the embedded system must respond to within a specific time window. An red-light traffic camera is a good example. The system must detect when a car has run a red light and take at least one good photo the license plate before the car is out of view. It doesn‚Äôt always have to run fast enough to catch a speedster in its electronic sights, in fact, the majority of the time nothing will be happening at all. Sometimes, an Embedded Engineer needs to make sure the system can respond in real time to external events.
+	This factor is closely related to system speed. Real time constraints are events in the real world the embedded system must respond to within a specific time window. An red-light traffic camera is a good example. The system must detect when a car has run a red light and take at least one good photo the license plate before the car is out of view. It doesnít always have to run fast enough to catch a speedster in its electronic sights, in fact, the majority of the time nothing will be happening at all. Sometimes, an Embedded Engineer needs to make sure the system can respond in real time to external events.
 	</p>
 
 <h2>Reliability</h2>
 	
 	<p>
-	Software has bugs. And machines break. Any given situation has differing tolerances for computer and mechanical errors. If you are designing a space probe, that tolerance will be zero, or as close as you can manage. Getting that will be expensive. High quality electronic parts that are well sheilded against the intense radiation in space. Redundant systems for your redundant systems. For software you will need to make sure every edge case of the program is covered, the code has been reviewed by twenty sets of eyes. The program doesn‚Äôt crash even when its run twenty thousand times and it runs out of memory.  On the other hand, if you are designing a pen light, that caliber of reliability is completely unnecessary.
+	Software has bugs. And machines break. Any given situation has differing tolerances for computer and mechanical errors. If you are designing a space probe, that tolerance will be zero, or as close as you can manage. Getting that will be expensive. High quality electronic parts that are well sheilded against the intense radiation in space. Redundant systems for your redundant systems. For software you will need to make sure every edge case of the program is covered, the code has been reviewed by twenty sets of eyes. The program doesnít crash even when its run twenty thousand times and it runs out of memory.  On the other hand, if you are designing a pen light, that caliber of reliability is completely unnecessary.
 	</p>
 	
 <h2>Power</h2>
 	
 	<p>
-	Some embedded systems run on battery power. And even when they don‚Äôt having a low power footprint can be an important requirement for the project. Picking an appropriate processor is an important step, ensuring its clock speed isn‚Äôt higher than necessary, and using its sleep mode when possible if it has one. Checking the power needs of other parts on the board, like sensors or network devices, is another step. 
+	Some embedded systems run on battery power. And even when they donít having a low power footprint can be an important requirement for the project. Picking an appropriate processor is an important step, ensuring its clock speed isnít higher than necessary, and using its sleep mode when possible if it has one. Checking the power needs of other parts on the board, like sensors or network devices, is another step. 
 	</p>
 
 	<p>
@@ -174,10 +181,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>

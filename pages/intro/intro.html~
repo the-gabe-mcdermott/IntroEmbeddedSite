@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduction to Embedded Systems- Chapter 5: Bit Manipulation</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+	<link href="css/textBodyStyles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+	
+	<li class="sidebar-brand">
+		<a href="/index.html">
+		Intro Emb. Sys.</a>
+	</li>
+
+	<li> 
+		<a href="/pages/intro/intro.html">
+		Introduction</a>
+	</li>
+
+	<li>
+		<a href="/pages/introToElectricity/introToElectricity.html">
+		Crash Course in Electricity</a>
+	</li>
+                                
+	<li>
+		<a href="/pages/dataSheets/dataSheets.html">
+		Data Sheets</a>
+	</li>
+
+	<li>
+		<a href="/pages/bitManipulation/bitManipulation_Intro.html">
+		Bit Manipulation</a>
+	</li>
+                                
+	<li>
+		<a href="/pages/glossary/glossaryAndIndex.html">
+		Glossary/Index</a>
+	</li>
+	</ul>
+</div>
+<!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+						
+						<div class=chapterBody>
+	<h1> Introduction to Embedded Systems </h1>
+	<h2> What is an embedded system? </h2>
+	<p>
+	At its simplest, an embedded system is a computer inside something else. 
+	“Computer” here means something a little different then what people normally 
+	mean when they say “computer”. 
+	</p>
+
+	<p>
+	When people use the word "Computer" in everyday converstaion. They
+	are talking about a general purpose computer, a computer that 
+	can be used for many jobs. It can run a web browser,
+	an email client, play games, all the same physical computer.
+	A computer can be used for so many jobs because it can run different 
+	software to perform each task. A general purpose computer typically also has an operating system,
+	software run to start and stop other software, and to allow multiple programs to run together on the same computer.
+	</p>
+
+	<p>
+	Embedded systems are not general purpose computers, they are application specific computers. Embedded systems are built with the hardware and software to do one job. A digital traffic light controller, for example, is usually not well equipped for playing solitaire. Embedded systems may or may not use an operating system. 
+	</p>
+	
+	<p>
+	Embedded systems are also not purely-hardware based electronic logic systems. That is, embedded systems contain processors and use software running on the processor to do at least part of their job. 
+	</p>
+	
+	<p>
+	The three categories just mentioned make a spectrum of which embedded systems are a part. The definition of an embedded system is slippery, and if a gizmo qualifies and can be argued in some cases. 
+	</p>
+	
+	<!--
+	Draw a spectrum
+		
+		pure electronics ? embedded system ? general purpose computer
+		no processor	   processor, one or two programs	os      many programs
+
+	Put different products on this spectrum
+	-->
+	<p>
+	Embedded engineering is the design of systems in the middle of this spectrum. Systems that require circuits and software to be designed to work. 
+	</p>
+	
+	<p>
+	Embedded circuits exist inside cars, medical equipment, manufacturing lines, home appliances, the list goes on for awhile.
+	</p>
+	
+	<p>
+	Embedded designers have to juggle five different factors for any project. These priorities will have different weight depending on the project. 
+	</p>
+	
+	<p>
+	Those five factors are:
+	</p>
+	<ol type="1">
+		<li>Cost</li>
+		<li>Speed	</li>
+		<li>Real time constrains</li>
+		<li>Reliability</li>
+		<li>Power</li>
+	</ol>
+
+	<h2>Cost</h2>
+	
+	<p>
+	Embedded systems require parts. A processor, batteries, switches, resistors, and other parts all cost money. Each part may cost only a few cents apeice, but when you are manufacturing hundreds of thousands of gizmos, saving a few cents a unit makes a big difference. The other cost comes from software, licenses for using propriety libraries can cost money, but most important is developer time. It costs a lot to pay people to write code, it also costs a lot to pay people to maintain code. This is an important, and easily overlooked cost factor a designer must consider when first planning out a project. 
+	</p>
+	
+	<h2>Speed</h2>
+	
+	<p>
+	Faster computers are always better, right? Not always. The speed of a computer is dependent upon a lot of factors, but mostly it comes down to processor clock speed. The clock speed determines how many instructions the computer performs per second, usually represented as hertz. (hz) Processors capable of faster clock speeds are usually more expensive, and typically use more electrical power (more on power later). 
+	</p>
+
+	<h2>Real Time Constraints</h2>
+	
+	<p>
+	This factor is closely related to system speed. Real time constraints are events in the real world the embedded system must respond to within a specific time window. An red-light traffic camera is a good example. The system must detect when a car has run a red light and take at least one good photo the license plate before the car is out of view. It doesn’t always have to run fast enough to catch a speedster in its electronic sights, in fact, the majority of the time nothing will be happening at all. Sometimes, an Embedded Engineer needs to make sure the system can respond in real time to external events.
+	</p>
+
+<h2>Reliability</h2>
+	
+	<p>
+	Software has bugs. And machines break. Any given situation has differing tolerances for computer and mechanical errors. If you are designing a space probe, that tolerance will be zero, or as close as you can manage. Getting that will be expensive. High quality electronic parts that are well sheilded against the intense radiation in space. Redundant systems for your redundant systems. For software you will need to make sure every edge case of the program is covered, the code has been reviewed by twenty sets of eyes. The program doesn’t crash even when its run twenty thousand times and it runs out of memory.  On the other hand, if you are designing a pen light, that caliber of reliability is completely unnecessary.
+	</p>
+	
+<h2>Power</h2>
+	
+	<p>
+	Some embedded systems run on battery power. And even when they don’t having a low power footprint can be an important requirement for the project. Picking an appropriate processor is an important step, ensuring its clock speed isn’t higher than necessary, and using its sleep mode when possible if it has one. Checking the power needs of other parts on the board, like sensors or network devices, is another step. 
+	</p>
+
+	<p>
+	You will never be able to maximize all these factors equally. Most projects have a focus on two or three, with the remaining factors being less important. Knowing which of these factors your project prioritizes is important throughout designing and building an embedded system. 
+	</p>
+	
+<div class=well><samp>"Computer science is no more about computers than astronomy is about telescopes." - Edsger Dijkstra</samp></div>
+
+						<div class=license>
+						<p>
+						&copy 2017
+						</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>	
+</body>
+
+</html>

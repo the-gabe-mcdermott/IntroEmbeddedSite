@@ -13,11 +13,11 @@
     <title>Introduction to Embedded Systems- Chapter 5: Bit Manipulation</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	<link href="css/textBodyStyles.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+	<link href="/css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,26 +30,37 @@
 <body>
     <div id="wrapper">
 
-         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand">
-					<a href="index.html">Intro Emb. Sys.</a>
-                </li>
-				<li>
-					<a href="intro.html">Introduction</a>
-				</li>
-				<li>
-					<a href="introToElectricity.html">Crash Course in Electricity</a>
-				</li>
-				<li>
-					<a href="dataSheets.html">Data Sheets</a>
-				</li>
-				<li>
-					<a href="bitManipulation_Intro.html">Bit Manipulation</a>
-				</li>
-				<li>
-					<div class="sidebar-subtopic">
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+	
+	<li class="sidebar-brand">
+		<a href="/index.html">
+		Intro Emb. Sys.</a>
+	</li>
+
+	<li> 
+		<a href="/pages/intro/intro.html">
+		Introduction</a>
+	</li>
+
+	<li>
+		<a href="/pages/introToElectricity/introToElectricity.html">
+		Crash Course in Electricity</a>
+	</li>
+                                
+	<li>
+		<a href="/pages/dataSheets/dataSheets.html">
+		Data Sheets</a>
+	</li>
+
+	<li>
+		<a href="/pages/bitManipulation/bitManipulation.html">
+		Bit Manipulation</a>
+	</li>
+
+	<li>
+				<div class="sidebar-subtopic">
 					<a href="bitManipulation_Addresses.html">Addresses</a>
 					</div>
 				</li>
@@ -67,13 +78,12 @@
 					<div class="sidebar-subtopic">
 					<a href="bitManipulation_CodeExample.html">Example</a>
 					</div>
-				</li>
-				<li>
-					<a href="glossaryAndIndex.html">Glossary/Index</a>
-				</li>
-			</ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+	</li>    
+	</ul>
+</div>
+<!-- /#sidebar-wrapper -->
+
+<!-- Page Content -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -96,7 +106,7 @@ refer to specific apartments.
 </p>
 
 <div class=default_diagram>
-<img src="textbook-content/images/bitManipulation/AddressesAsApartments.png" 
+<img src="images/AddressesAsApartments.png" 
       	alt="Figure 1: A 5 story aprtment building with unit numbers writen on all ten apartments arragned in a neat grid."
 	width="500" height="300">
 </div>
@@ -115,7 +125,7 @@ depends on the microcontroller.
 contain eight bits at every address.
 </p>
 
-<div class=default_diagram><img src="textbook-content/images/bitManipulation/zerosAtApartments.png" 
+<div class=default_diagram><img src="images/zerosAtApartments.png" 
 	alt="Figure 2: Similar to figure 1, except instead of apartment faces in a grid, 8 zeros are at each cell in the 2x5 grid."
 	width="500" height="300">
 </div>
@@ -262,10 +272,10 @@ This is done with a <strong> mask </strong>.
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
