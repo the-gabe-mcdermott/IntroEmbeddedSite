@@ -91,16 +91,20 @@
 
 <p>
 To understand how to use bitwise operators
-to assign a value to only one bit 
+to assign a value to only one bit
 at an address, I'll describe an example.
 </p>
 
 <p>
-You are in charge of writing the software 
-to control the display panel on the front
-of an wireless router.
-There will be a bank of eight LEDs on this 
-display panel. The first-- right most-- LED
+You work at a company that makes wireless
+routers. You work on the firmware team,
+writing low level software for the company's
+newest router the "L33tSpeed 3000".
+</p>
+
+<p>
+The front of the router features a display panel with
+eight LEDs. The first-- right most-- LED
 will indicate if the router is powered on.
 The second LED will power on when a 
 connection to the internet is active,
@@ -110,8 +114,17 @@ bar graph indicating the speed of
 the connection to the internet.
 </p>
 
+<div class=default_diagram>
+<img src="textbook-content/images/bitManipulation/RouterFace.png"
+     alt="Figure 1: A panel with 8 green leds is shown.
+     	  The right most LED is labeled Power.
+	  The second right most LED is labled Active.
+	  The remaining LEDS are labled Speed."
+     	  width="260" height="90">
+</div>
+
 <p>
-A member of your team has started a function to toggle the 2nd LED, indicating an active connection to the internet. 
+A team member, Jon, has started a function to toggle the 2nd LED, indicating an active connection to the internet. 
 </p>
 
 <div class=CodeExample>
@@ -124,7 +137,8 @@ A member of your team has started a function to toggle the 2nd LED, indicating a
 * 			uint32_t * led_display_address
 *				Pointer to address of front panel LED display.
 ***************************************************************/
-void DisplayInternetStatus(uint8_t internet_connected_true, uint32_t * led_display_address)
+void DisplayInternetStatus(uint8_t internet_connected_true,
+			   uint32_t * led_display_address)
 {
 	if (internet_connected_true == 1)
 	{
@@ -143,14 +157,20 @@ void DisplayInternetStatus(uint8_t internet_connected_true, uint32_t * led_displ
 </div>
 
 <p>
-Your job is to finish the function, turning on the LED when the link is active, and turning it off otherwise. 
-You also need to make sure you leave all the other LEDs the way they were before the function was called, 
+Your job is to finish the function, 
+turning on the LED when the link is active,
+and turning it off otherwise. 
+You also need to make sure you leave
+all the other LEDs the way they were 
+before the function was called, 
 since they display other information.
 </p>
 
+<h3> Solution </h3>
 <p>
-	To accomplish this, you could write the following function.
+To accomplish this, you could write the following function.
 </p>
+
 <div class="CodeExample">
 <pre>
 <code>
@@ -247,7 +267,7 @@ void Bit2Off(uint32_t * led_display_address)
 </div>
 
 <p>
-Then you can add your two functions to the code your team member started.
+Then you can add your two functions to the code Jon started.
 </p>
 
 <div class=CodeExample>
