@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Introduction to Embedded Systems- Chapter 5: Bit Manipulation</title>
+    <title>Introduction to Embedded Systems- User Defined Types</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -113,16 +113,13 @@ concepts will be covered:
 	</li>
 
 	<li>
-		Volitle Variables
+		Volatile Variables
 	</li>
 		
 	<li>
 		Static Variables
 	</li>
 </ul>
-
-<a class="btn btn-default" href="userDefinedTypes_nextPage.html">Next</a>
-</div>
 
 
 <div class=license>
