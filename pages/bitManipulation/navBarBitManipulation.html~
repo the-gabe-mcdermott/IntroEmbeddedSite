@@ -1,0 +1,52 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+	
+	<li class="sidebar-brand">
+		<a href="/index.html">
+		Intro Emb. Sys.</a>
+	</li>
+
+	<li> 
+		<a href="/pages/intro/intro.html">
+		Introduction</a>
+	</li>
+
+	<li>
+		<a href="/pages/introToElectricity/introToElectricity.html">
+		Crash Course in Electricity</a>
+	</li>
+                                
+	<li>
+		<a href="/pages/dataSheets/dataSheets.html">
+		Data Sheets</a>
+	</li>
+
+	<li>
+		<a href="/pages/bitManipulation/bitManipulation.html">
+		Bit Manipulation</a>
+	</li>
+
+	<li>
+				<div class="sidebar-subtopic">
+					<a href="bitManipulation_Addresses.html">Addresses</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_Masking.html">Masking</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_BitwiseOperations.html">Bitwise Operators</a>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar-subtopic">
+					<a href="bitManipulation_CodeExample.html">Example</a>
+					</div>
+	</li>    
+	</ul>
+</div>
+<!-- /#sidebar-wrapper -->

@@ -16,8 +16,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-	<link href="css/textBodyStyles.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,41 +31,8 @@
     <div id="wrapper">
 
 <!-- Sidebar -->
-<div id="sidebar-wrapper">
-	<ul class="sidebar-nav">
-	
-	<li class="sidebar-brand">
-		<a href="/index.html">
-		Intro Emb. Sys.</a>
-	</li>
 
-	<li> 
-		<a href="/pages/intro/intro.html">
-		Introduction</a>
-	</li>
-
-	<li>
-		<a href="/pages/introToElectricity/introToElectricity.html">
-		Crash Course in Electricity</a>
-	</li>
-                                
-	<li>
-		<a href="/pages/dataSheets/dataSheets.html">
-		Data Sheets</a>
-	</li>
-
-	<li>
-		<a href="/pages/bitManipulation/bitManipulation_Intro.html">
-		Bit Manipulation</a>
-	</li>
-                                
-	<li>
-		<a href="/pages/glossary/glossaryAndIndex.html">
-		Glossary/Index</a>
-	</li>
-	</ul>
-</div>
-<!-- /#sidebar-wrapper -->
+<div id="injectNavbarHere"></div>
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -74,7 +41,7 @@
                     <div class="col-lg-12">
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 						
-						<div class=chapterBody>
+<div class=chapterBody>
 	<h1> Introduction to Embedded Systems </h1>
 	<h2> What is an embedded system? </h2>
 	<p>
@@ -186,11 +153,18 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
+   <!-- Import Navbar -->
+    <script>
+	$(function(){
+		$("#injectNavbarHere").load("/navbars/navBarBase.html");
+	   });
+    </script>
+    
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
