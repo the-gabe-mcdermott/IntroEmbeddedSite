@@ -29,7 +29,7 @@
 	<div id=navbarTabBitManipulation></div>                               
 	
 	<li>
-		<a href="/pages/userDefinedTypes/userDefinedTypes.html">
+		<a hreft="/pages/userDefinedTypes/userDefinedTypes.html">
 		User Defined Types</a>
 	</li>
 	<div id=navbarTabUserDefinedTypes></div> 
