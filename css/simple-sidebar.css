@@ -104,6 +104,11 @@
 .sidebar-subtopic {
 	padding-left:25px;
 }
+
+.sidebar-editing {
+	color: #f4aa42;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
