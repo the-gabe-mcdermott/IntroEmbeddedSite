@@ -49,7 +49,7 @@
 
 <p>
 A <strong> typedef </strong> lets you create an
-alternate name for an existing datatype. Consider these example.
+alternate name for an existing data type. Consider these example.
 </p>
 
 <div class=codeExampe>
@@ -63,7 +63,7 @@ alternate name for an existing datatype. Consider these example.
 	//as an unsigned 32 bit integer
 	typedef uint32_t word_t;
 	
-	//Defines a new datatype just
+	//Defines a new data type just
 	//for masks.
 	typedef uint8_t mask8_t;
 	
@@ -79,21 +79,21 @@ uint8_t.
 <h3> typedef V. #Defines </h3>
 <p>
 Typedefs are similar to "#define" statements, which are
-a form of pre-processor directive that I will
+a form of preprocessor directive that I will
 explain later in the chapter. The difference 
 is that typdefs are interpreted by the compiler,
-while #defines are interpreted by the pre-processor.
+while #defines are interpreted by the preprocessor.
 </p>
 
 <p>
 Put another way, when you mash the button
 to compile your code, first, the 
 #defines are "swapped in" by the
-pre-processor. The pre-processor is dumber
+preprocessor. The preprocessor is dumber
 than the compiler and won't do any error
 checking or second guessing its job, it will
 copy and paste all the #defines it finds.
-After the pre-processor, the compiler 
+After the preprocessor, the compiler 
 is left to interpret the
 typedefs.
 </p>
