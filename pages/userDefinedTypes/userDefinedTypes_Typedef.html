@@ -46,16 +46,57 @@
 <h1> User Defined Types </h1>
 	
 <h2> Type Definitions</h2>
-<small> the "typedef" keyword </small>
-
+
 <p>
-Typedef is a thing.
+A <strong> typedef </strong> lets you create an
+alternate name for an existing datatype. Consider these example.
 </p>
 
+<div class=codeExampe>
+<pre>
+<code>
+	//Defines the word "byte"
+	//as an unsigned 8 bit integer
+	typedef uint8_t byte_t;
 
+	//Defines the word "word"
+	//as an unsigned 32 bit integer
+	typedef uint32_t word_t;
+	
+	//Defines a new datatype just
+	//for masks.
+	typedef uint8_t mask8_t;
+	
+</code
+</pre>
+</div>
 
+<p> It is possible to create multiple typedefs for the same
+"base" type. That is, you can create multiple typedefs that are
+uint8_t.
+</p>
 
+<h3> typedef V. #Defines </h3>
+<p>
+Typedefs are similar to "#define" statements, which are
+a form of pre-processor directive that I will
+explain later in the chapter. The difference 
+is that typdefs are interpreted by the compiler,
+while #defines are interpreted by the pre-processor.
+</p>
 
+<p>
+Put another way, when you mash the button
+to compile your code, first, the 
+#defines are "swapped in" by the
+pre-processor. The pre-processor is dumber
+than the compiler and won't do any error
+checking or second guessing its job, it will
+copy and paste all the #defines it finds.
+After the pre-processor, the compiler 
+is left to interpret the
+typedefs.
+</p>
 
 <div class=license>
 <p>
