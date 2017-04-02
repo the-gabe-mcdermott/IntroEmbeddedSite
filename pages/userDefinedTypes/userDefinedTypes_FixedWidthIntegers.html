@@ -48,17 +48,40 @@
 <h2> Fixed Width Integers </h2>
 
 <p>
-Fixed width integers are custom integer types that have an explicitly defined number
-bits in them. For example, a uint32_t is 32 bits long. uint8_t is 8 bits long.
+    Fixed width integers are custom integer types 
+    that have an explicitly defined number
+    bits in them. For example, a uint32_t 
+    is a custom defined type that is an unsigned 
+    integer garenteed to be 32 bits long. 
 </p>
 
 <p>
-These are used to avoid ambiguous lengths for variables when 
-code gets ported between microcontrollers. For instance,
+    These are used to avoid ambiguous lengths for variables when 
+    code gets ported between microcontrollers. For instance,
     some environments consider an int to be 32 bits long,
     while others can consider it to be 64 bits long.
 </p>
 
+<p>
+    The GCC Standard Int library defines the following
+    fixed width integers.
+</p>
+
+<div class="codeExample">
+<pre>
+<code>
+    int8_t      var1; //signed 8 bit int.
+    int16_t     var2; //signed 16 bit int.
+    int32_t     var3; //signed 32 bit int.
+    int64_t     var4; //signed 64 bit int.
+    
+    uint8_t     var5; //unsigned 8 bit int.
+    uint16_t    var6; //unsigned 8 bit int.
+    uint32_t    var7; //unsigned 8 bit int.
+    uint64_t    var8; //unsigned 8 bit int.
+</code>
+</pre>
+</div>
 
 
 
