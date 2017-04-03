@@ -48,8 +48,40 @@
 <h2> Enumerated Types </h2>
 
 <p>
-    Stuff
+    Enums are a type that allow you
+    to associate a name with integer values.
+    For example, you could create an enum for a
+    traffic light that defines 0 as stop, 1 as slow,
+    and 2 as go. Then in your code, you can use
+    those keywords.
 </p>                         
+
+<div class="codeExample">
+<pre>
+<code>
+    int main(void)
+    {
+        enum signalState_t {STOP, SLOW, GO};
+		
+	    signalState_t currentSignal = STOP;
+	    case(currentSignal)
+	    {
+		    STOP: TurnOnRedLight();
+		    break;
+		    SLOW: TurnOnYellowLight();
+		    break;
+		    GO: TurnOnGreenLight();
+		    break;
+		    default: TurnOffAllLights();
+		    break;
+	    }
+        
+    
+        return 1;
+    }
+</code>
+</pre>
+</div>
 
 
 
