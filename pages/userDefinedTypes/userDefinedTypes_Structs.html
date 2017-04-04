@@ -48,15 +48,40 @@
 <h2> Structs </h2>
 
 <p>
-like a simplified version of a class in C++, or a class
-without methods.
+    Structs allow you to create new data types that are a grouping other data types.
+    For example, you could create a "keyPress" struct that contains a character pressed, and 
+    and integer with the duration of the press. 
 </p>
 
 <p>
-Allow you to group different data types together into a new
-datatype that packs all the parts together.
-<p>
+    These two pieces of information would be tightly coupled together, and stored next
+    to each other in memory. Structs are a lot like classes in C++ and other languages.
+    However, structs do not (inherently) have a way of having functions or methods
+    associated with it.
+</p>
 
+<p> Here is an example of a struct</p>
+
+<div class="codeExample">
+<pre>
+<code>
+    struct KeyPress{
+	char character;
+	uint16_t pressDuration;
+};
+
+int main(void)
+{
+	struct KeyPress storedPress;
+	
+	storedPress.character = 'c';
+	storedPress.pressDuration = 2;
+	
+	return 0;
+}
+</code>
+</pre>
+</div>
 
 
 
