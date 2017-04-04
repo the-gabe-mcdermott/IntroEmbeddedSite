@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Introduction to Embedded Systems- Chapter 5: Bit Manipulation</title>
+    <title>Introduction to Embedded Systems- User Defined Types</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -45,9 +45,47 @@
 
 <h1> User Defined Types </h1>
 	
-<h2> Title </h2>
+<h2>Unions </h2>
+
+<p>
+    The union keyword allows you to create a variable
+    that can be used as different data types. The 
+    data stored in memory is the same, but reading
+    or writing it as different data types allows the
+    data to be interpreted in different ways.
+</p>
+
+<div class="codeExample">
+<pre>
+<code>
+    union CharType {
+	char asciiData;
+	uint8_t intData;
+};
+
+int main(void)
+{
+	union CharType firstChar;	
+		
+	firstChar.asciiData = "a";
+    firstChar.intData += 1;
+    //firstChar.asciiData = "b"
+	firstChar.intData += 32;
+	//firstChar.asciiData = "B"	
+		
+	return 0;
+}
+
+</code>
+</pre>
+</div>
 
 
+<p>
+    For example. A "char" data type takes up a byte in memory.
+    A "char" variable could be unioned with a uint8_t, allowing 
+    it to also be used for integer operations. 
+</p>
 
 
 
