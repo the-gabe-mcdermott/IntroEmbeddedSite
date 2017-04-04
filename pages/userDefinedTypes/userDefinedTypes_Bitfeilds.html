@@ -48,12 +48,75 @@
 <h2> Bitfeilds </h2>
 
 <p>
-    This is a sentance.
-    This is gaasdfas.
+    Bitfeilds allows you 
+    to assign a label to individual bits,
+    or groups of bits, in a variable.
+    This can be used to assign a label
+    to individual four bit words within a byte.
 </p>
 
+<div class="codeExample">
+<pre>
+<code>
+    struct wordStore_t{
+	uint8_t bits0123	: 4;
+	uint8_t	bits4567	: 4;
+	};
+	
+int main(void)
+{
+	struct wordStore_t someData;
+	
+	//Maximum value for allocated space
+	//of 4 bits.
+	someData.bits0123 = 15; 
+	someData.bits4567 = 12;
+	return 0;
+}
+</code>
+</pre>
+</div>
 
+<p>
+    It could also be used to pack 
+    multiple one bit
+    flags into a single byte.
+</p>
 
+<div class="codeExample">
+<pre>
+<code>
+    struct flagStore_t{
+	uint8_t flagA			: 1;
+	uint8_t flagB			: 1;
+	uint8_t flagC			: 1;
+	uint8_t flagD			: 1;
+	uint8_t flagE			: 1;
+	uint8_t flagUnused		: 3;
+};
+
+int main(void)
+{
+	struct flagStore_t myFlags;
+	
+	myFlags.flagA = 1;
+	myFlags.flagB = 1;
+	myFlags.flagC = 1;
+	myFlags.flagD = 0;
+	myFlags.flagE = 0;	
+	
+	return 0;
+}
+</code>
+</pre>
+</div>
+
+<p>
+    Bitfeilds become 
+    especially interesting when used in 
+    conjunction with unions.
+</p>
+                    
 <a class="btn btn-default" href="userDefinedTypes_nextPage.html">Next</a>
 </div>
 
