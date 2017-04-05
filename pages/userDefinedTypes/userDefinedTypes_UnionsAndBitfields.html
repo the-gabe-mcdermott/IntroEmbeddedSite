@@ -120,7 +120,7 @@ int main(void)
 <code>
     
 typedef union //"typedef" means a new type is going to be defined.
-			  //"union" means the type will have two or more ways
+              //"union" means the type will have two or more ways
               // it can be read (or written).
 {			
 	struct // UNION PART 1: Can be read as a struct	  
@@ -132,13 +132,17 @@ typedef union //"typedef" means a new type is going to be defined.
 		uint8_t	reservedBitsA		:2; 
 		uint8_t	servoControlBit		:1;
 		uint8_t reservedBitsB		:3;		
-		//The bitfeild looks like this:
-		//	X X X 0 X X 0 0
-		//		 \ \   \ \ \_ used for firstLED.
-		//		  \ \   \ \__ used for secondLED.
-		//         \ \   \___ these two bits reserved (not currently used for anything).
-		//		    \ \______ used for servo control.
-		//			 \_______ last three bits reserved.
+                /**** The bitfeild looks like this in memory: ********
+		Bit:	Use:
+		1		used for firstLED.
+		2		used for secondLED.
+		3       These two bits reserved (not currently in use.)
+		4			"
+		5       used for servo control.
+		6       Last three bits reserved.
+		7			"
+		8			"
+		******************************************************/
 	} bits;
 	unsigned char rawRegisterValue; //UNION PART 2: can be read as an 8-bit character.
 }hwControlReg_t; //Our new type will be called a "hwControlReg_t". 
