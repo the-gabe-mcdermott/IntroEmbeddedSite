@@ -45,9 +45,106 @@
 
 <h1> User Defined Types </h1>
 	
-<h2> Title </h2>
+<h2> Bitfeilds and Unions </h2>
 
+<p>
+    The union keyword can be used along with a bitfeild.
+    Here's an example of some syntax.
+</p>
 
+<div class="codeExample">
+<pre>
+<code>
+        
+//Defines a special datatype for reading/writing
+//from our a hardware register controlling some LEDs
+//and a servo.
+typedef union 
+{
+	struct
+	{
+		uint8_t firstLedBit		:1;
+		uint8_t secondLedBit	:1;
+		uint8_t	reservedBitsA	:2;
+		uint8_t	servoControlBit :1;
+		uint8_t reservedBitsB    :3;			
+		
+	} bits;
+	unsigned char rawRegisterValue;
+}hwControlReg_t;
+
+int main(void)
+{
+	hwControlReg_t writeHwControlData;
+	
+	//Init all the bits in the register to 0;
+	writeHwControlData.rawRegisterValue = 0;
+	
+	//A function defined elsewhere that writes 
+	//the data we give it to the control register.
+	WriteToRegister(writeHwControlData);
+	
+	//Turn on on the first LED.
+	writeHwControlData.bits.firstLedBit = 1;
+	
+	//REMEMBER: overwrites the entire register. 
+	//Stores the value 00000001 into the register,
+	//clobbering any data that was there before.
+    //To write only single bits in the register
+    //at a time, see the section on Bit Manipulation
+	WriteToRegister(writeHwControlData);
+	
+	//Turn on the second LED
+	writeHwControlData.bits.secondLedBit = 1;
+	
+	return 0;
+}
+</code>
+</pre>
+</div>
+
+<p>
+    When the union and bitfeild are used together, it allows
+    for granular control of the individual bits, and for 
+    easily writing to all of the bits at once. 
+</p>
+
+<p>
+    The syntax is a little dense, so don't feel
+    bad if it still looks like magic. Here is a break
+    down of what each part is doing.
+</p>
+
+<div class="codeExample">
+<pre>
+<code>
+    
+typedef union //"typedef" means a new type is going to be defined.
+			  //"union" means the type will have two or more ways
+              // it can be read (or written).
+{			
+	struct // UNION PART 1: Can be read as a struct	  
+	{
+		 //The struct in question contains a
+		 //bitfield.
+		uint8_t firstLedBit			:1; 
+		uint8_t secondLedBit		:1; 
+		uint8_t	reservedBitsA		:2; 
+		uint8_t	servoControlBit		:1;
+		uint8_t reservedBitsB		:3;		
+		//The bitfeild looks like this:
+		//	X X X 0 X X 0 0
+		//		 \ \   \ \ \_ used for firstLED.
+		//		  \ \   \ \__ used for secondLED.
+		//         \ \   \___ these two bits reserved (not currently used for anything).
+		//		    \ \______ used for servo control.
+		//			 \_______ last three bits reserved.
+	} bits;
+	unsigned char rawRegisterValue; //UNION PART 2: can be read as an 8-bit character.
+}hwControlReg_t; //Our new type will be called a "hwControlReg_t". 
+</code>
+</pre>
+</div>
 
 </div>
 

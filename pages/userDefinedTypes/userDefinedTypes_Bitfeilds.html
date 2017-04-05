@@ -109,11 +109,42 @@ int main(void)
 </code>
 </pre>
 </div>
+<h3>Gotchas</h3>
+                            
+<p>
+    Bitfeilds use the "base" type, they are
+    given to define their size in memory.
+    In the above example, the "uint8_t" type
+    defines the size of the bitfeild as eight bits.
+</p>
 
+<p>
+    If the size is defined as something more exotic, like 
+    45 bits, the variable would exist in one word of 32 bit
+    wide memory, and 13 bits of it another word.
+    In order to avoid complications like this, many compilers
+    will limit the size of a bitfeild to the size of an integer
+    in that system (32, 64, or some other number of bits.)
+</p>
+
+<p>
+    Different compilers will enforce different length
+    restrictions, and others will enforce non at all.
+    This quirk, among many, is a reason that 
+    bitfeilds are not especially portable, and
+    may be interpreted differently by different
+    compilers. 
+    This should be considered when using them
+    in your code.
+</p>
+
+<h3>Making Bitfeilds More Useful</h3>
 <p>
     Bitfeilds become 
     especially interesting when used in 
-    conjunction with unions.
+    conjunction with unions. 
+    This is explained further in the 
+    section on Bitfeilds and Unions.
 </p>
                     
 
