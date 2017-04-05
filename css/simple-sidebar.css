@@ -24,8 +24,7 @@
     #navbarToggleButton.closed {
         border-radius: 0 5px 5px 0;
         left: 0;
-
-        background: green;
+        background:  grey;
     }
 #navbarToggleButton.closed span {
     transform:rotate(0);
