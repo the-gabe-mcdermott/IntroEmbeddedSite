@@ -4,6 +4,39 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+/* Custom CSS************************************/
+#navbarToggleButton {
+    height: 100px;
+    line-height: 100px;
+    width: 15px;
+    border-radius: 5px 0 0 5px;
+    position: fixed;
+    text-align: center;
+    left: calc(250px - 15px);
+    top: 50%;
+    margin-top: -50px;
+    background: white;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+    #navbarToggleButton.closed {
+        border-radius: 0 5px 5px 0;
+        left: 0;
+        background:  grey;
+    }
+#navbarToggleButton.closed span {
+    transform:rotate(0);
+}
+
+
+#navbarToggleButton span {
+    transform:rotate(180deg);
+    display: block;
+}
+
+/*Template CSS*******************************/
  body {
     overflow-x: hidden;
  }
