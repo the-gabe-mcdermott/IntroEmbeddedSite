@@ -50,8 +50,9 @@
     Bitfeilds allows you 
     to assign a label to individual bits,
     or groups of bits, in a variable.
-    This can be used to assign a label
-    to individual four bit words within a byte.
+    For instance, I can use a bitfeild 
+    to assign a label to individual four 
+    bit words within a byte.
 </p>
 
 <div class="codeExample">
@@ -112,7 +113,7 @@ int main(void)
 <h3>Gotchas</h3>
                             
 <p>
-    Bitfeilds use the "base" type, they are
+    Bitfeilds use the "base" type they are
     given to define their size in memory.
     In the above example, the "uint8_t" type
     defines the size of the bitfeild as eight bits.
@@ -129,7 +130,7 @@ int main(void)
 
 <p>
     Different compilers will enforce different length
-    restrictions, and others will enforce non at all.
+    restrictions, and others will enforce none at all.
     This quirk, among many, is a reason that 
     bitfeilds are not especially portable, and
     may be interpreted differently by different
@@ -137,16 +138,6 @@ int main(void)
     This should be considered when using them
     in your code.
 </p>
-
-<h3>Making Bitfeilds More Useful</h3>
-<p>
-    Bitfeilds become 
-    especially interesting when used in 
-    conjunction with unions. 
-    This is explained further in the 
-    section on Bitfeilds and Unions.
-</p>
-                    
 
 </div>
 

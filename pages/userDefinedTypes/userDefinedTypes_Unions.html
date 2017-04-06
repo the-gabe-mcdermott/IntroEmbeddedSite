@@ -45,14 +45,17 @@
 
 <h1> User Defined Types </h1>
 	
-<h2>Unions </h2>
+<h2>Unions</h2>
 
 <p>
     The union keyword allows you to create a variable
-    that can be used as different data types. The 
-    data stored in memory is the same, but reading
-    or writing it as different data types allows the
-    data to be interpreted in different ways.
+    that can be interpreted multiple ways.
+    One variable is "unioned" with two or more types,
+    in order for the variable to read or written as any 
+    one of those types. 
+    The data stored in memory is the same, but
+    the different data types allow the binary
+    data to be "filtered" or interpreted in different ways.
 </p>
 
 <div class="codeExample">
@@ -86,6 +89,8 @@ int main(void)
     A "char" variable could be unioned with a uint8_t, allowing 
     it to also be used for integer operations. 
 </p>
+
+
 
 
 </div>

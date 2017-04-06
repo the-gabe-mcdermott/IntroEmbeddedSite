@@ -45,10 +45,9 @@
 <h1> User Defined Types </h1>
 	
 <h2> Type Definitions</h2>
-                            
 <p>
-A <strong> typedef </strong> lets you create an
-alternate name for an existing data type. Consider these example.
+    A <strong> typedef </strong> lets you create an
+alternate name for an existing data type. Consider this example.
 </p>
 
 <div class=codeExampe>
@@ -66,7 +65,7 @@ alternate name for an existing data type. Consider these example.
 	//for masks.
 	typedef uint8_t mask8_t;
 	
-</code
+</code>
 </pre>
 </div>
 
@@ -75,12 +74,27 @@ alternate name for an existing data type. Consider these example.
 uint8_t.
 </p>
 
-<h3> typedef V. #Defines </h3>
+<h3> typedef v. #Defines </h3>
 <p>
 Typedefs are similar to "#define" statements, which are
 a form of preprocessor directive that I will
-explain later in the chapter. The difference 
-is that typdefs are interpreted by the compiler,
+explain in the chapter "Compiler Instructions. The difference 
+has to do with when the keyword is considered during the compilation
+process. The compilation process has four steps.
+</p>
+<ol>
+    <li>Preprocessing</li>
+    <li>Compilation</li>
+    <li>Assembly</li>
+    <li>Linking</li>
+</ol>
+<p>
+These steps will be covered in slightly more detail in the 
+Compiler Instructions Chapter.
+</p>
+Preprocessor directives like "#define" (and most other keywords
+begining with an #octothorp)
+is that typdefs are interpreted during the "compilation" step
 while #defines are interpreted by the preprocessor.
 </p>
 
@@ -111,7 +125,7 @@ typedefs.
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
+    </div>
     </div>
     <!-- /#wrapper -->
 
