@@ -17,7 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="../../css/simple-sidebar.css" rel="stylesheet">
-	<link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,65 +29,101 @@
 
 <body>
     <div id="wrapper">
-<div id="injectNavbarHere"></div>
+        <div id="injectNavbarHere"></div>
 
-<!-- Page Content -->
-
+        <!-- Page Content -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
 
-						<div class=chapterBody>
-	
-
-<h1> Compiler Instructions </h1>
-	
-<h2> Static Variables </h2>
+                        <div class=chapterBody>
 
 
+                            <h1> Compiler Instructions </h1>
+
+                            <h2> Static Variables </h2>
+
+                            <p>
+                                The static keyword indicates that a given variable should only be stored
+                                in one fixed place in memory, and not on the stack.
+                            </p>
+
+                            <p>
+                                What this means is that static variables exist all the time. Even if defined
+                                in a function, static variables still exist when the function exits.
+                                If the same function accesses the variable next, it will have whatever
+                                data it had when the function last exited. It will also retain its data even
+                                if another function accesses the variable. 
+                            </p>
+
+                            <h3> An Ordinary Variable in Memory</h3>
+
+                            <p>
+                                When a function begins, a small chunk of memory is allocated
+                                for it on the stack. 
+                            </p>
+                            <p>
+                                Later in the function, when a variable is defined, another chunk
+                                of memory is allocated for it on the stack. 
+                            </p>
+
+                            <p>
+                                Finally, when the function ends, or <strong>exits scope</strong>,
+                                all space allocated for the function
+                                and variables it declared are unallocated. 
+                            </p>
+
+                            <h3> A Static Variable in Memory</h3>
+                            
+                            <p>
+                                When a static variable is declared, regardless of in
+                                a function or in main, it is allocated a piece of memory outside
+                                of the stack, making it persistent, regardless of what function is
+                                currently being run. 
+                            </p>
+
+                            <div class=license>
+                                <p>
+                                    &copy 2017
+                                </p>
+                            </div>
 
 
-<div class=license>
-<p>
-	&copy 2017
-</p>
-</div>
 
-						
-						
-						
+
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
+
         </div>
-        <!-- /#page-content-wrapper -->
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../../js/jquery.js"></script>
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../js/bootstrap.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="../../js/jquery.js"></script>
+        <!-- Import Navbar -->
+        <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../js/bootstrap.min.js"></script>
 
-    <!-- Import Navbar -->
-    <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
+        <!-- Google Anaylytics Script -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	
-	<!-- Google Anaylytics Script -->
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-96461127-1', 'auto');
+            ga('send', 'pageview');
 
-  ga('create', 'UA-96461127-1', 'auto');
-  ga('send', 'pageview');
-
-	</script>
+        </script>
 </body>
 
 </html>

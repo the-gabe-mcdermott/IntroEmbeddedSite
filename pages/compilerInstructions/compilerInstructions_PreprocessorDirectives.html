@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿333<!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
 
@@ -93,7 +93,7 @@
                             <div class="codeExample">
                                 <pre>
 <code>
-        #define INIT_VALUE 10
+#define INIT_VALUE 10
 #define PRINT_SOME_STARS printf("***")
 
 
@@ -113,12 +113,13 @@ int main(void)
 </pre>
                             </div>
 
-                            <h3>#if</h3>
+                            <h3>#ifdef</h3>
 
                             <p>
-                                The #if keyword is used with the #endif keyword to surround
-                                of code. If the statement after the #if is true, the preprocessor
-                                includes the code in the block. If its false, the code is cut out.
+                                The #ifdef keyword is used with the #endif keyword to surround
+                                of code. If the statement after the #ifdef is defined elsewhere
+                                as a #define, the preprocessor
+                                includes the code in the block. Otherwise, the code is cut out.
                                 this is called <strong>Conditional Compilation</strong>, since
                                 its a conditional statement that controls if the code is compiled
                                 or not.
@@ -126,56 +127,42 @@ int main(void)
                            <div class="codeExample">
                                <pre>
 <code>
-#define INCLUDE_THE_STAR_CODE
+#define STARS "***"
 
 int main(void)
 {
 
-	#if INCLUDE_THE_STAR_CODE
-		printf("***");
-	#endif
+    #ifdef STARS
+        //Doesn't get compiled if 
+        //"#define STARS" is missing
+        print(STARS);
+    #endif
 	
-	return 0;
+    return 0;
 }
 </code>
 </pre>
                            </div>
 
+                            <h3>#ifndef</h3>
+
+                            <p>
+                                #ifndef checks if the next statement is NOT defined in the code as a #define.
+                            </p>
 
                             <h3>#else</h3>
                             <p>
                                 The preprocessor directive equivalent of an ordinary else statement.
-                                It is used with the #if and behaves as you would expect.
+                                It is used with the #ifdef and behaves as you would expect.
                             </p>
 
-                            <h3>#elif</h3>
-                            <p>
-
-                            </p>
-                            <h3>#ifdef</h3>
-                            
-                            <p>
-
-                            </p>
-                            
-                            <h3>#ifndef</h3>
-                            
-                            <p>
-
-                            </p>
-                            
-                            <h3>#error</h3>
-                            
-                            <p></p>
                             
                             <h3>Preprocessor Directive Gotchas</h3>
                            
                             <p>
                                 Preprocessor directives never reach the compiler proper.
                                 By the time the compiler sees the code, it has been chopped and 
-                                swapped and flipped around. Therefore, the compiler can't catch
-                                errors in code that was removed by the preprocessor (code inside a
-                                failing #if block). Furthermore, most debuggers will throw a fit 
+                                swapped and flipped around. Most debuggers will throw a fit 
                                 if an error is encountered in a chunk of code that a #define swapped
                                 in. In fact most debuggers won't even try.
                             </p>

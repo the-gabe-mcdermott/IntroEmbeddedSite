@@ -17,7 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="../../css/simple-sidebar.css" rel="stylesheet">
-	<link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,38 +29,57 @@
 
 <body>
     <div id="wrapper">
-<div id="injectNavbarHere"></div>
+        <div id="injectNavbarHere"></div>
 
-<!-- Page Content -->
-
+        <!-- Page Content -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
 
-						<div class=chapterBody>
-	
-
-<h1> Compiler Instructions </h1>
-	
-<h2> Volatile Variables </h2>
-
-<p>
-</p>
-
-</div>
+                        <div class=chapterBody>
 
 
-<div class=license>
-<p>
-	&copy 2017
-</p>
-</div>
+                            <h1> Compiler Instructions </h1>
 
-						
-						
-						
+                            <h2> Volatile Variables </h2>
+
+                            <p>
+                                The volatile keyword is used to tell the compiler
+                                that the variable it is tied to will change outside
+                                of the software's actions.
+                            </p>
+
+                            <p>
+                                This is used with variables that will be tied to registers,
+                                sensors, and other information coming in from the outside world.
+                            </p>
+
+                            <p>
+                                The reason this keyword is necessary is due to how compilers
+                                optimize code. Variables like this are not written to anyplace
+                                in the code, since they are updated by outside factors. 
+                                Compilers notice this, and cut the variable out of the code,
+                                concluding the variable is not being 
+                                used (since it is never written to, how it hold meaningful
+                                information, or even be used properly?) The volatile keyword
+                                tells the compiler not to make this assumption, and to keep
+                                the variable in place.
+                            </p>
+
+                        </div>
+
+
+                        <div class=license>
+                            <p>
+                                &copy 2017
+                            </p>
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -69,7 +88,6 @@
 
     </div>
     <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="../../js/jquery.js"></script>
 
@@ -79,18 +97,20 @@
     <!-- Import Navbar -->
     <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
 
-	
-	<!-- Google Anaylytics Script -->
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-96461127-1', 'auto');
-  ga('send', 'pageview');
+    <!-- Google Anaylytics Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	</script>
+        ga('create', 'UA-96461127-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </body>
 
 </html>
