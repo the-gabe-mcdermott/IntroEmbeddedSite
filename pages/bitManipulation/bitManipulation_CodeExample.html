@@ -137,7 +137,8 @@ To accomplish this, you could write the following function.
 void Bit2On(uint32_t * led_display_address)
 {
 	//Note the mask is all zeros except for the 2nd bit.
-	uint8_t const SECOND_BIT_MASK = 4’b0010;	
+	uint8_t const SECOND_BIT_MASK = 0x02;
+	//For those uncomfortable with hex 0x02 = 0000 0010;
 	
 	//Temporary Variables.
 	uint8_t led_write_data = 0;
@@ -190,7 +191,9 @@ void Bit2Off(uint32_t * led_display_address)
 {
 	//NOTE!!! our mask is inverted from the mask
 	//used in the first example.
-	int const SECOND_LED_MASK = 4’b1101;	
+	uint8_t const SECOND_BIT_MASK = 0xFD;
+	//In hex 0xFD = 1111 1101;
+	
 	uint8_t led_write_data = 0;
 	uint8_t led_read_data = 0;
 	
