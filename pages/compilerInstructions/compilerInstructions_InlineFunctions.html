@@ -45,7 +45,58 @@
 
                             <h2> Inline Functions </h2>
 
-                            
+                            <p>
+                                The inline keyword is used with a function declaration.
+                                It is a way to politely ask the compiler to treat the
+                                function as a macro. 
+                            </p>
+                            <h3>Inline Example</h3>
+                            <div class="codeExample">
+                                <pre>
+<code>
+command_t ReadKeypad(void)
+{
+	//command_t defined elsewhere with a typedef
+	//and an enum
+	command_t current_command = NULL_COMMAND;
+		
+	uint8_t buttonPressRows = 0;
+	uint8_t buttonPressColumns = 0;
+			
+	//Read data from ten digit keypad
+		
+	//All Rows with buttons currently pressed.
+	buttonPressRows = GetRowData();
+	//All Columns with buttons currently pressed.
+	buttonPressColumns = GetColumnData();
+		
+	current_command = GetCommandFromRawButtonData(buttonPressRows, buttonPressColumns);
+	return current_command;	
+}
+
+//Inline keyword asks the compiler nicely to treat this function like a macro.
+inline command_t GetCommandFromRawButtonData(uint8_t buttonPressRows, uint8_t buttonPressColumns)
+{
+	command_t selectedCommand = NULL_COMMAND;
+	//TODO:Select a command based on button rows and columns
+	
+	return selectedCommand;
+}
+</code>
+</pre>
+                            <h3>Inline is A Request</h3>
+                            <p>
+                             Since the inline keyword is handled by the compiler
+                                and not by the preprocessor like with a #define macro,
+                                it behaves a little differently.
+                            </p>                                
+                                
+                                <p>
+                                    For one thing, error handling and type checking
+                                    will work normally for code inside the inlined
+                                    function.
+                                </p>
+                            </div>
 
                             <div class=license>
                                 <p>
@@ -74,7 +125,7 @@
         <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
 
 
-        <!-- Google Anaylytics Script -->
+        <!-- Google Analytics Script -->
         <script>
             (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
