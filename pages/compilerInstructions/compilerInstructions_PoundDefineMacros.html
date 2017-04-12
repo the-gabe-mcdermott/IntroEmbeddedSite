@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduction to Embedded Systems- Compiler Instructions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="injectNavbarHere"></div>
+
+        <!-- Page Content -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class=chapterBody>
+
+
+                            <h1> Compiler Instructions </h1>
+
+                            <h2> #Define Macros</h2>
+                            <p>
+                                The #define keyword was briefly explained in the
+                                preprocessor directive section. To review, 
+                                anytime the preprocessor encounters the identifier
+                                given after the #define in the code, it cut and pastes
+                                the defined code snippet in its place. 
+                            </p>
+
+                            <p>
+                                This can be used to substitute in values.
+                            </p>
+
+                            <div class="codeExample">
+                                <pre>
+<code>
+#define CHARACTER_TO_PRINT "*"
+
+
+int main(void)
+{
+
+	printf(CHARACTER_TO_PRINT); 
+	
+	return 0;
+}
+</code>
+</pre>
+                            </div>
+
+                            <p>
+                                This can also be used to substitute in multiple
+                                lines of code.
+                            </p>
+
+                            <div class="codeExample">
+                                <pre>
+<code>
+#define PRINT_STARS printf("***")
+
+
+int main(void)
+{
+
+	PRINT_STARS;
+	
+	return 0;
+}
+</code>
+</pre>
+                            </div>
+
+                            <p>
+                                Even better, you can write a #define to take parameters
+                                like a function call would. Taking the variables given
+                                and assigning them in the code pasted in.
+                            </p>
+
+                            <div class="codeExample">
+                                <pre>
+<code>
+#define DEBUG_PRINT( printThis) (printf(printThis))
+
+
+int main(void)
+{
+
+	const char messageToPrint[5]  = "****";
+	DEBUG_PRINT(messageToPrint);
+	
+	return 0;
+}
+</code>
+</pre>
+                            </div>
+
+                            <h2> Macros v Functions</h2>
+                            <p>
+                                Macros look similar to functions. But they behave 
+                                in very different ways. To understand the difference,
+                                you need to know how function calls are turned into assembly
+                                and how that assembly interacts with memory.
+                            </p>
+
+                            <h3>Overview of Function Call Mechanics</h3>
+                            <h4> Ordinary Operation</h4>
+                            <p>
+                                When you are executing your compiled code,
+                                assembly instructions are loaded into the
+                                CPU instruction register and another register 
+                                called the program counter steadily ticks higher,
+                                counting off assembly instructions already performed.
+                            </p>
+                            
+                            <p>
+                                The instruction in the instruction register is 
+                                performed, with variables serving as operands
+                                and the results stored in general purpose registers, anywhere 
+                                from 2 to 32 other registers, depending on architecture.
+                            </p>
+
+                            <p>
+                                Anytime the processor loads an assembly instruction
+                                that is a function call, something different happens.
+                            </p>
+
+                            <h4>When A Function Call is Encountered</h4>
+                            <p>
+                                The code inside the function call will need to use the
+                                general purpose registers to do its thing, but the
+                                code that called the function is currently using them to store 
+                                its own variables.
+                            </p>
+
+                            <p>
+                                To handle this, the data in all the registers is saved into memory in
+                                the stack. Now, the function about to be called can use the registers.
+                                When it is done, it will politely retrieve that data from the stack
+                                and put back into the registers, allowing the original function to 
+                                continue, business as usual. 
+                            </p>
+                            
+<div class="codeExample">
+    <pre>
+<code>
+void OrderCartons(uint16_t numberOfEggs);
+void SendOrderSignal(uint16_t numberOfCartons);
+
+int main(void)
+{
+	uint8_t numberOfChickens = 8;
+	uint8_t numberOfEggs = 0;
+	
+	uint16_t expectedEggsPerChicken = 3;
+	
+	//General purpose registers are used to hold variables
+	//Currently in use.
+	numberOfEggs += numberOfChickens * expectedEggsPerChicken;
+	
+	//A function call causes all gernal purpose registers to be
+	//saved to the stack.
+	OrderCartons(numberOfEggs);
+	
+	//Since variable data was loaded back into 
+	//general purpose registers after the 
+	//function call,  can be used normally.
+	printf("%d",numberOfEggs);
+	return 0;
+}
+
+void OrderCartons(uint16_t numberOfEggs)
+{
+	const uint16_t eggsInACarton = 12;
+	uint16_t numberOfCartonsToOrder = 0;
+	
+	//The function uses the general purpose registers
+	//the same way main does.
+	numberOfCartonsToOrder = numberOfEggs/eggsInACarton;
+	
+	SendOrderSignal(numberOfCartonsToOrder);
+	
+	//Before exiting, main's variable data is loaded from the stack
+	//and back into the general purpose registers.
+	//Any data in the registers used by this function is lost
+	//as the function "exits scope".
+}
+
+</code>
+</pre>
+</div>
+
+                            <h2>Macros v Functions Recap</h2>
+                            
+                            <p>
+                                So functions have a overhead associated with them,
+                                extra instructions that save register data on the 
+                                stack and later retries it.
+                            </p>
+
+                            <p>
+                                Macros, on the other hand, have no such overhead.
+                                They are a instructions to the preprocessor
+                                to cut and paste a chunk of code directly into another chunk.
+                            </p>
+
+                       
+                            <h3>Why Use a Macro Over a Function </h3>
+
+                            <p>
+                                Function calls have a small amount of overhead
+                                associated with them. Saving all the registers takes
+                                time. It doesn't take a lot of time, but it takes 
+                                some time. 
+                            </p>
+
+                            <p>
+                               The time cost could become significant if the code
+                                in question will be executed many times during the 
+                                program operation. 
+                            </p>
+
+                            <p>
+                                Macros are also generally used in Interrupts, which is covered
+                                in the Interrupts chapter.
+                            </p>
+
+                            
+                            <h3>Why NOT to Use a Macro Over a Function </h3>
+
+                            <p>
+                                Macros cut and paste the code they contain
+                                everywhere the preprocessor sees the identifier.
+                                If the identifier is found in the file in twenty 
+                                separate places, the macro code will be pasted
+                                into each of those places. If the macro pastes
+                                6 lines of code into each place, this will 
+                                add an extra 100 instructions of C code to the file.
+                                (6 instructions added per macro x 20 macro 
+                                occurrences)  - 20  macro occurrences removed = 100.
+                            </p>
+
+                            <p>
+                                If the microcontroller has limited space to store
+                                instructions, this could pose a problem. 
+                            </p>
+
+                            <p>
+                                Another cost associated with macros is the added compile time.
+                                The more the macro is used, the longer the code will take
+                                to compile. Long compile times are obnoxious to developers, sure,
+                                but will legitimately slow down development and debugging time.
+                                And developer time is an important resource to consider. 
+                            </p>
+
+
+
+                        </div>
+                        <div class=license>
+                            <p>
+                                &copy 2017
+                            </p>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- Import Navbar -->
+    <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
+
+
+    <!-- Google Anaylytics Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96461127-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+
+</html>

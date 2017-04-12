@@ -82,21 +82,20 @@ explain in the chapter "Compiler Instructions. The difference
 has to do with when the keyword is considered during the compilation
 process. The compilation process has four steps.
 </p>
-<ol>
-    <li>Preprocessing</li>
-    <li>Compilation</li>
-    <li>Assembly</li>
-    <li>Linking</li>
-</ol>
-<p>
-These steps will be covered in slightly more detail in the 
-Compiler Instructions Chapter.
-</p>
-Preprocessor directives like "#define" (and most other keywords
-begining with an #octothorp)
-is that typdefs are interpreted during the "compilation" step
-while #defines are interpreted by the preprocessor.
-</p>
+                            <ol>
+                                <li>Preprocessing</li>
+                                <li>Compilation</li>
+                                <li>Assembly</li>
+                                <li>Linking</li>
+                            </ol>
+                            <p>
+                                Preprocessor directives like "#define" (and most other keywords
+                                beginning with an #octothorp) are handled during the preprocessing step,
+                                before the code reaches the "actual" compiler. It can be confusing,
+                                because "Compiler" can refer generically to all the programs that perform
+                                all the steps above, or specifically to the program that does the
+                                Compilation step.
+                            </p>
 
 <p>
 Put another way, when you mash the button

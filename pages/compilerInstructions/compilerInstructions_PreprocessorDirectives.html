@@ -1,0 +1,225 @@
+﻿333<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduction to Embedded Systems- Compiler Instructions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="injectNavbarHere"></div>
+
+        <!-- Page Content -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class=chapterBody>
+
+
+                            <h1> Compiler Instructions </h1>
+
+                            <h2> What Are Preprocessor Directives?</h2>
+
+                            <p>
+                                Preprocessor directives in C are any keywords with an octothorp (#) in front.
+                                They are special instructions meant for the preprocessor part of the compiler
+                                to perform, before the code is actually compiled.
+                            </p>
+
+                            <h3> Compilation Process Review</h3>
+
+                            <p>
+                                Compiling Code is performed in four steps.
+                            </p>
+                            <ol>
+                                <li>Preprocessing</li>
+                                <li>Compilation</li>
+                                <li>Assembly</li>
+                                <li>Linking</li>
+                            </ol>
+                            <p>
+                                Preprocessor directives like "#define" (and most other keywords
+                                beginning with an #octothorp) are handled during the preprocessing step,
+                                before the code reaches the "actual" compiler. It can be confusing,
+                                because "Compiler" can refer generically to all the programs that perform
+                                all the steps above, or specifically to the program that does the
+                                Compilation step.
+                            </p>
+
+
+                            <h2> The C Preprocessor Directives</h2>
+                            <p>
+                                The following are all the C Preprocessor directives, their syntax, and notes on
+                                their use.
+                            </p>
+
+                            <h3>#Define</h3>
+
+                            <p>
+                                #define defines a "shorthand" for another chunk of code. The official
+                                name for this is a <strong>macro</strong>. When the preprocessor encounters
+                                a #define, it makes a note of the name, or identifier, and the code that follows.
+                                Then, anyplace else in the code the identifier is encountered, the preprocessor
+                                replaces the identifier with the chunk of code associated with it, cutting and
+                                pasting the longer code in to replace the shorthand.
+                            </p>
+
+                            <p>
+                                Details about macros, why you would want to use them, and ways they
+                                can trip you up are covered in detail in the #Define Macros Section.
+                            </p>
+
+                            <h3> #define example</h3>
+                            <div class="codeExample">
+                                <pre>
+<code>
+#define INIT_VALUE 10
+#define PRINT_SOME_STARS printf("***")
+
+
+int main(void)
+{
+	int myVariable = INIT_VALUE;
+	//INIT_VALUE gets replaced with "10"
+	
+	PRINT_SOME_STARS; 
+	//gets replaced with printf("***")"
+	
+	myVariable++;
+	
+	return 0;
+}
+</code>
+</pre>
+                            </div>
+
+                            <h3>#ifdef</h3>
+
+                            <p>
+                                The #ifdef keyword is used with the #endif keyword to surround
+                                of code. If the statement after the #ifdef is defined elsewhere
+                                as a #define, the preprocessor
+                                includes the code in the block. Otherwise, the code is cut out.
+                                this is called <strong>Conditional Compilation</strong>, since
+                                its a conditional statement that controls if the code is compiled
+                                or not.
+                            </p>
+                           <div class="codeExample">
+                               <pre>
+<code>
+#define STARS "***"
+
+int main(void)
+{
+
+    #ifdef STARS
+        //Doesn't get compiled if 
+        //"#define STARS" is missing
+        print(STARS);
+    #endif
+	
+    return 0;
+}
+</code>
+</pre>
+                           </div>
+
+                            <h3>#ifndef</h3>
+
+                            <p>
+                                #ifndef checks if the next statement is NOT defined in the code as a #define.
+                            </p>
+
+                            <h3>#else</h3>
+                            <p>
+                                The preprocessor directive equivalent of an ordinary else statement.
+                                It is used with the #ifdef and behaves as you would expect.
+                            </p>
+
+                            
+                            <h3>Preprocessor Directive Gotchas</h3>
+                           
+                            <p>
+                                Preprocessor directives never reach the compiler proper.
+                                By the time the compiler sees the code, it has been chopped and 
+                                swapped and flipped around. Most debuggers will throw a fit 
+                                if an error is encountered in a chunk of code that a #define swapped
+                                in. In fact most debuggers won't even try.
+                            </p>
+                            <p>
+                                Be aware that preprocessors are shifting the code around in ways the 
+                                compiler and debugger don't necessarily expect, and this can 
+                                lead to strange errors and erratic debugger behavior if you are not careful. 
+                            </p>
+
+                        </div>
+
+
+                        <div class=license>
+                            <p>
+                                &copy 2017
+                            </p>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- Import Navbar -->
+    <script src="../../js/toggleNavbar_CompilerInstructions.js"></script>
+
+
+    <!-- Google Anaylytics Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96461127-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+
+</html>
