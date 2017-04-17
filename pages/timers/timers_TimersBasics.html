@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduction to Embedded Systems- Timers</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="injectNavbarHere"></div>
+
+        <!-- Page Content -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class=chapterBody>
+
+
+                            <h1> Timers </h1>
+
+                            <h2> What Are Timers Used For?</h2>
+                            <p>
+                                Timers are seperate logic compontents inside the
+                                microcontroller. They "tick" at precise intervals,
+                                the length of which can be programed to suit your needs.
+                                They can be setup and configured with your software,
+                                running on the cpu, and then set to start, and they
+                                will tick away while the processor runs other instructions.
+                            </p>
+
+                            <p>
+                                This makes them useful for
+                                measuring time precisly, and
+                                for performing other tasks while
+                                we wait.
+                            </p>
+
+
+                            <h2>
+                                How to Use A Timer
+                            </h2>
+
+                            <p>
+                                To use a timer in your code, follow these
+                                steps:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Write to the timer configuration register
+                                    to setup the timer to work as needed.
+                                    Clock source, and enable bits generally
+                                    need to be configured
+                                </li>
+                                <li>
+                                    Start the timer, generally by writing a
+                                    "1" to a special start/stop bit in the
+                                    configuration register.
+                                </li>
+                                <li>
+                                    Wait, or perform other tasks. While you wait,
+                                    a register holding the timer count value will
+                                    increment once every tick.
+                                </li>
+                                <li>
+                                    Read the timer count register to see how
+                                    much time has passed.
+                                </li>
+                                <li>
+                                    Stop the timer, generally by writing a "0"
+                                    To the special start/stop bit in the
+                                    configuration register.
+                                </li>
+                            </ul>
+
+                            <p>If left to continue counting, the timer will
+                            eventually overflow. When a timer overflows,
+                            usually they roll over and set a flag, or a bit
+                            in another register.</p>
+
+                            <h2> Timers in the Aurduino Uno</h2>
+                            
+                            <p>
+                                The Atmega microcontroller used in the Aurdunio Uno development
+                                board has two 8-bit timers and one 16 bit timer. The 8 bit timers
+                                will count up to 255 before rolling over, and the 16 bit timer
+                                to 65,535.
+                            </p>
+
+                            <h3>Aurduino Uno Timer Control Register Breakdown</h3>
+                            
+                            <p>
+                                Here are some screen shots
+                                from the datasheet, to give a
+                                concrete example of how to configure
+                                a timer. These captures show some of the configuration
+                                registers for "TC0", or Timer0.
+                            </p>
+
+                            <p> TC0 is enabled by setting a "1" to the 5th bit of the
+                            Power Reduction Register. This register is labeled "PRR"
+                            in the datasheet (hint:Use ctl+F to find it and read the rest)
+                            The bit is labeled "PRTIM0" in the datasheet. The screen cap below
+                            highlights how this is shown in the datasheet.</p>
+                            
+
+                            <div class="well">
+                                <div class=default_diagram>
+                                    <img src="images/datasheetCap_TC0Enable_Highlighted.PNG"
+                                         alt="Screen capture from 14.12.3 of the Atmel 42735 datasheet"
+                                         width="500" height="300">
+                                </div>
+                            </div>
+
+                                <p>
+                                    This register can be written to with the offset given
+                                    (0x64), or with the #define "PRR"" given by the
+                                    library provided for this microcontroller.
+                                </p>
+
+                                <p>
+                                    The following screen cap shows the datasheet description of the
+                                    counter register. It shows the whole 8-bit register can be accessed,
+                                    and that it is accessed with offset 0x46.
+                                </p>
+
+                                <div class="well">
+                                    <div class=default_diagram>
+                                        <img src="images/datasheetCap_TC0CounterValue_Highlighted.png"
+                                             alt="Screen capture from 19.9.5 of the Atmel 42735 datasheet"
+                                             width="500" height="300">
+                                    </div>
+                                </div>
+                                
+                                <p>
+                                    The data sheet contains detailed descriptions of all the timer controls,
+                                    for all three of the timers. The timers have many functions,
+                                    Read the datasheet more to discover more about them.
+                                </p>
+
+
+                                <div class=license>
+                                    <p>
+                                        &copy 2017
+                                    </p>
+                                </div>
+
+
+
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- Import Navbar -->
+    <script src="../../js/toggleNavbar_Timers.js"></script>
+
+    <!-- Google Anaylytics Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96461127-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+
+</html>
