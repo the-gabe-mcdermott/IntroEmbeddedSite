@@ -44,17 +44,17 @@
 
                             <h2> What Are Timers Used For?</h2>
                             <p>
-                                Timers are seperate logic compontents inside the
+                                Timers are separate logic components inside the
                                 microcontroller. They "tick" at precise intervals,
                                 the length of which can be programed to suit your needs.
                                 They can be setup and configured with your software,
-                                running on the cpu, and then set to start, and they
+                                running on the CPU, and then set to start, and they
                                 will tick away while the processor runs other instructions.
                             </p>
 
                             <p>
                                 This makes them useful for
-                                measuring time precisly, and
+                                measuring time precisely, and
                                 for performing other tasks while
                                 we wait.
                             </p>
@@ -102,16 +102,16 @@
                             usually they roll over and set a flag, or a bit
                             in another register.</p>
 
-                            <h2> Timers in the Aurduino Uno</h2>
+                            <h2> Timers in the Arduino Uno</h2>
                             
                             <p>
-                                The Atmega microcontroller used in the Aurdunio Uno development
+                                The Atmega microcontroller used in the Arduino Uno development
                                 board has two 8-bit timers and one 16 bit timer. The 8 bit timers
                                 will count up to 255 before rolling over, and the 16 bit timer
                                 to 65,535.
                             </p>
 
-                            <h3>Aurduino Uno Timer Control Register Breakdown</h3>
+                            <h3>Arduino Uno Timer Control Register Breakdown</h3>
                             
                             <p>
                                 Here are some screen shots
@@ -123,7 +123,7 @@
 
                             <p> TC0 is enabled by setting a "1" to the 5th bit of the
                             Power Reduction Register. This register is labeled "PRR"
-                            in the datasheet (hint:Use ctl+F to find it and read the rest)
+                            in the datasheet (hint:Use ctrl+F to find it and read the rest)
                             The bit is labeled "PRTIM0" in the datasheet. The screen cap below
                             highlights how this is shown in the datasheet.</p>
                             
@@ -189,7 +189,7 @@
     <!-- Import Navbar -->
     <script src="../../js/toggleNavbar_Timers.js"></script>
 
-    <!-- Google Anaylytics Script -->
+    <!-- Google Analytics Script -->
     <script>
         (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

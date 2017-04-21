@@ -77,7 +77,7 @@
 
                             <ul>
                                 <li><strong>Period:</strong> Time between cycles</li>
-                                <li><strong>Frequency:</strong> Number of cylces in a second, measured in Hertz (Hz)</li>
+                                <li><strong>Frequency:</strong> Number of cycles in a second, measured in Hertz (Hz)</li>
                             </ul>
 
 <p>
@@ -99,12 +99,12 @@
     All timers use a
     <strong> timer source</strong> signal to
     tell them when to tick. This signal should
-    be an ocillating signal, and should have 
+    be an oscillating signal, and should have 
     a frequency within safe minimum and maximum
     boundaries. (IE, The timer won't work if
     the source signal is too fast or too slow)
     Every time the source signal goes high,
-    (or some other pre-defined stage in the cycle)
+    (or some other predefined stage in the cycle)
     the timer ticks once. Therefore, the frequency
     of the timer source signal, or <strong> timer
     source clock</strong>, determines the frequency
@@ -121,12 +121,12 @@
                             You can select the clock signal the
                             processor in using, sometimes known
                             as the master clock.
-                            Then, the timer frequencey will be 
+                            Then, the timer frequency will be 
                                 the same as the processor frequency.
                             <p/>
                             
                             <p> 
-                                However, the frequency of the the master
+                                However, the frequency of the master
                                 clock may not meet your needs. It may be
                                 too fast, counting to the maximum counter
                                 value (255 for the 8-bit counter), too
@@ -153,12 +153,12 @@
                                 than simply accepting the master clock frequency.
                             </p>
 
-                            <h3> How To Select A Source Clock on the Aurduino Uno</h3>
+                            <h3> How To Select A Source Clock on the Arduino Uno</h3>
                             <p>
-                            Datasheet section 19.9.2 
+                            Data-sheet section 19.9.2 
                             on register TCCR0B, bits CS0.
                             Table 19-10 describes how to select different clock sources 
-                            with the microcontroller on the Aurdunio Uno.
+                            with the microcontroller on the Arduino Uno.
                             </p>
                     <h2> Possible Prescaler Output Frequencies </h2>
                             <p>
@@ -184,8 +184,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td>1 MGz</td>
-                                    <td>CLK/2</td>
+                                    <td>1 MHz</td>
+                                    <td>CLK/2<H/td>
                                     <td>0.5 MHz or 500 KHz</td>
                                     <td>2 microSec</td>
                                 </tr>
@@ -225,7 +225,7 @@
 
                             <p>
                                 The timer frequency directly controls the timer 
-                                <strong>Resolution</strong>, or how grainular a
+                                <strong>Resolution</strong>, or how granular a
                                 chunk of time the timer can measure. 
                             </p>
 
@@ -241,9 +241,9 @@
                                 If the timer frequency is too high, too many ticks
                                 will occur in a second. Either too 
                                 may measurements will be made (which would be 
-                                inconvineint and perhaps waste power on unneeded 
+                                inconvenient and perhaps waste power on unneeded 
                                 sensor reads), or the timer will roll over before
-                                the ball has left the sensors feild of view
+                                the ball has left the sensors field of view
                                 (which could really foul things up)
                             </p>
 
@@ -258,7 +258,7 @@
 
                             <p>
                                 It is in our best interests to find a timer frequency
-                                that gives us the best possible resolution for our applicaion.
+                                that gives us the best possible resolution for our application.
                             </p>
 
 <div class=license>
