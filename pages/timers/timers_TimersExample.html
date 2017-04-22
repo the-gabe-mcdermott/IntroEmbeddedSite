@@ -17,7 +17,7 @@
 
     <!-- Custom CSS -->
     <link href="../../css/simple-sidebar.css" rel="stylesheet">
-	<link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <link href="../../css/textBodyStyles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,68 +29,231 @@
 
 <body>
     <div id="wrapper">
-<div id="injectNavbarHere"></div>
+        <div id="injectNavbarHere"></div>
 
-<!-- Page Content -->
-
+        <!-- Page Content -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-						<div class=chapterBody>
-	
-
-<h1> Timers </h1>
-
-<div class=well><samp>
-
-</samp></div>
-	
-<h2> Timers Basics</h2>
-<p>
-    
-</p>
+                        <div class=chapterBody>
 
 
-<div class=license>
-<p>
-	&copy 2017
-</p>
+                            <h1> Timers </h1>
+
+
+                            <h2> Timers Example</h2>
+
+                            <h3>Laser Object Detection (LIDAR)</h3>
+                            <p>
+                                Your manager, Kevin of Kevin Semiconductor has
+                                hired you to develop the code for a laser detection
+                                system for a super advanced security system.
+                            </p>
+
+                            <p>
+
+                            </p>
+
+                            <h4>Modules</h4>
+
+                            <ol>
+                                <li>
+                                    The LIDAR module, which uses a laser and a 
+                                    highly sensitive light sensor.
+                                    It will be able to detect if anything interrupts
+                                    the laser beam.
+                                </li>
+                                <li>
+                                    The Arduino, which will be responsible for
+                                    control logic.
+                                </li>
+                                <li>
+                                    The Buzzer, which will be wired into the
+                                    Arduino and will be loud enough to
+                                    notify nearby guards.
+                                </li>
+
+                            </ol>
+
+                            <h4>Required Operation</h4>
+
+                            <ol>
+                                <li>
+                                    If any object blocks the laser beam, 
+                                    the LIDAR module asserts a "1" on 
+                                    a control line wired into
+                                    the Arduino on pin X.
+                                    If the beam is uninterrupted, the
+                                    LIDAR module asserts a "0".
+                                    The LIDAR
+                                    is very precise, and can detect
+                                    interruptions within 1 NS resolution.
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li>
+                                            The Arduino, which will run with a
+                                            master clock of 1 MHz, will check for
+                                            a signal from the LIDAR on pin X.
+                                        </li>
+                                        <li>
+                                            For the prototype It will raise the alarm if
+                                            the beam is interrupted for longer than
+                                            3 seconds, and will have a 1 second resolution;
+                                            That is, it will check for the signal every 1
+                                            second.
+                                        </li>
+
+                                        <li>
+                                           After the bugs have been worked out of the 
+                                           prototype, it will be reprogrammed to raise
+                                           the alarm after the beam is
+                                           interupted for 150 microseconds, with 50 microsecond
+                                            resolution.
+                                        </li>
+                                        <li>
+                                            NOTE: The reason for
+                                            this "wait period" is explained in detail in
+                                            the Debounce section; but the quick version is
+                                            to make sure flies and dust won't trigger the system
+                                            on accident.
+                                        </li>
+                                        <li>
+                                            The alarm will be raised by calling a special function
+                                            that will be provided for you, and will sound a buzzer
+                                            wired into pin Y.
+                                        </li>
+                                        <li>
+                                            The alarm will sound for 2 seconds, and then turn off
+                                            automaticly.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    The Buzzer, which will be wired into the
+                                    Arduino on pin Y, to buzz when an object interrupts the beam,
+                                    and alert nearby guards of the rapidly 
+                                    developing situation. 
+                                </li>
+
+                            </ol>
+
+
+                            <h3>The Arduino Code</h3>   
+
+                            <h4>Pseudocode</h4>
+                            <p>
+                                You can use a timer to tell your program at what
+                                moments to check the LIDAR's "object detected" signal.
+                                This would be equivilant to the resolution, or how often
+                                the system checks for an interuption. 
+                            </p>
+
+                            <p>
+                                When you check the signal, and it detects an object,
+                                the software should increment a "ticks beam has been blocked"
+                                counter.
+                            </p>
+
+                            <p>
+                                When the counter becomes greater than or equal to a specified
+                                "Alarm Trigger Threshold" value, the software calls the 
+                                "Trigger Alarm" function.
+                            </p>
+
+                            <p>
+                                Before we do anything, we will probably need code 
+                                to initilize the system timers.
+                            </p>
+
+                            <p>
+                                A rough outline of your algorithm could look like this:
+                            </p>
+
+                            <div class=CodeExample>
+<pre>
+<code>
+
+    InitilizeTheSystem
+        InitilizeIOPins
+        InitilizeTimers
+
+    StartTimer
+
+    Loop Forever
+        if CheckIfTimeForBeamCheck == true
+        {
+            if CheckIfBeamBroken == true
+            {
+                ++ticksBeamHasBeenBroken
+            }
+            else
+            {
+                ticksBeamHasBeenBroken = 0;
+            }
+            
+            if ticksBeamHasBeenBroken >= AlarmTriggerThreshold
+            {
+                TriggerAlarm
+            }
+        }
+
+    End loop
+</code>
+</pre>
 </div>
 
-						
-						
-						
+                            <h4>Main Loop</h4>
+
+
+                            <h3> Testing The Solution</h3>
+                            <p>
+                                You can actually test this code
+                                with a function generator, or a button wired
+                                as an input to the pin. 
+                            </p>
+
+                            <div class=license>
+                                <p>
+                                    &copy 2017
+                                </p>
+                            </div>
+
+
+
+
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#page-content-wrapper -->
-    </div>
     </div>
     <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="../../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../../js/bootstrap.min.js"></script>
 
-        <!-- Import Navbar -->
-        <script src="../../js/toggleNavbar_Timers.js"></script>
+    <!-- Import Navbar -->
+    <script src="../../js/toggleNavbar_Timers.js"></script>
 
-	<!-- Google Anaylytics Script -->
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <!-- Google Analytics Script -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-96461127-1', 'auto');
-  ga('send', 'pageview');
+        ga('create', 'UA-96461127-1', 'auto');
+        ga('send', 'pageview');
 
-	</script>
+    </script>
 </body>
 
 </html>
