@@ -61,8 +61,8 @@
                             <ol>
                                 <li>
                                     The LIDAR module, which uses a laser and a 
-                                    highly sensitive light sensor.
-                                    It will be able to detect if anything interrupts
+                                    highly sensitive light sensor to 
+				    detect if anything interrupts
                                     the laser beam.
                                 </li>
                                 <li>
@@ -80,26 +80,36 @@
                             <h4>Required Operation</h4>
 
                             <ol>
+				    <li>
+					   Detection:
+					   <ul>
+						<li>
+                                    			If any object blocks the laser beam, 
+                                    			the LIDAR module asserts a "1" on 
+                                    			a control line wired into
+                                    			the Arduino on pin X.
+						</li>
+						<li>
+                                    			If the beam is uninterrupted, the
+                                    			LIDAR module asserts a "0".
+						</li>
+						<li>
+							The LIDAR
+                                    			is very precise, and can detect
+                                  		  	interruptions within 1 NS resolution.
+						</li>
+						</ul>
+                                	</li>
+                              
                                 <li>
-                                    If any object blocks the laser beam, 
-                                    the LIDAR module asserts a "1" on 
-                                    a control line wired into
-                                    the Arduino on pin X.
-                                    If the beam is uninterrupted, the
-                                    LIDAR module asserts a "0".
-                                    The LIDAR
-                                    is very precise, and can detect
-                                    interruptions within 1 NS resolution.
-                                </li>
-                                <li>
+				 	Control:
                                     <ul>
                                         <li>
-                                            The Arduino, which will run with a
-                                            master clock of 1 MHz, will check for
+                                            The Arduino will check for
                                             a signal from the LIDAR on pin X.
                                         </li>
                                         <li>
-                                            For the prototype It will raise the alarm if
+                                            The Arduino will raise the alarm if
                                             the beam is interrupted for longer than
                                             3 seconds, and will have a 1 second resolution;
                                             That is, it will check for the signal every 1
@@ -107,10 +117,9 @@
                                         </li>
 
                                         <li>
-                                           After the bugs have been worked out of the 
-                                           prototype, it will be reprogrammed to raise
-                                           the alarm after the beam is
-                                           interupted for 150 microseconds, with 50 microsecond
+                                           After the prototyping phase, this time period will be
+					   dialed down to check for interruptions longer than
+                                           150 microseconds, with 50 microsecond
                                             resolution.
                                         </li>
                                         <li>
@@ -121,23 +130,15 @@
                                             on accident.
                                         </li>
                                         <li>
-                                            The alarm will be raised by calling a special function
-                                            that will be provided for you, and will sound a buzzer
-                                            wired into pin Y.
+                                            If triggered, the alarm will be raised writing a "1" to
+					    pin Y, sounding an alarm. 
                                         </li>
                                         <li>
-                                            The alarm will sound for 2 seconds, and then turn off
-                                            automaticly.
+                                            The alarm will sound for 2 seconds, and then deactivate,
+					    writing a "0" to pin Y.
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    The Buzzer, which will be wired into the
-                                    Arduino on pin Y, to buzz when an object interrupts the beam,
-                                    and alert nearby guards of the rapidly 
-                                    developing situation. 
-                                </li>
-
                             </ol>
 
 
