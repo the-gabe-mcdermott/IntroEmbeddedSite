@@ -1,8 +1,9 @@
-//////TODOS Before Spring Break//////
--Update Glossary to include datasheets terms
--Update Glossary to include bit manipulation terms
--Update Glossary to include Intro page terms.
--Update Glossary to include electronics terms.
+-Update Major Section Headers to something more interesting.
+	From "Datasheets" to "Groking the Micro"
+		or more conservative: "Learning the Microcontroller"
+	From "Bit Manimpulation" to "Controlling the Pins"
+	From "User Defined Types" to "Code Readability"
+	From "Compiler Instructions" to "Groking the Compiler"
 
 -Edit Intro page pass 1
 -Edit Intro page pass 2

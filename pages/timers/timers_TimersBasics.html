@@ -47,16 +47,17 @@
                                 Timers are separate logic components inside the
                                 microcontroller. They "tick" at precise intervals,
                                 the length of which can be programed to suit your needs.
-                                They can be setup and configured with your software,
-                                running on the CPU, and then set to start, and they
-                                will tick away while the processor runs other instructions.
+                                They are setup by assigning values to special configuration
+                                registers, and then set to start the same way. 
+                                They will then continue to tick while the 
+                                processor runs other instructions.
                             </p>
 
                             <p>
                                 This makes them useful for
-                                measuring time precisely, and
-                                for performing other tasks while
-                                we wait.
+                                measuring the passage of time.
+                                They are more accurate than a polling loop,
+                                and frees up the processor to do other work.
                             </p>
 
 
@@ -73,7 +74,7 @@
                                 <li>
                                     Write to the timer configuration register
                                     to setup the timer to work as needed.
-                                    Clock source, and enable bits generally
+                                    Clock source and enable bits generally
                                     need to be configured
                                 </li>
                                 <li>
@@ -105,8 +106,8 @@
                             <h2> Timers in the Arduino Uno</h2>
                             
                             <p>
-                                The Atmega microcontroller used in the Arduino Uno development
-                                board has two 8-bit timers and one 16 bit timer. The 8 bit timers
+                                The Atmega 328-328P 
+                                has two 8-bit timers and one 16 bit timer. The 8 bit timers
                                 will count up to 255 before rolling over, and the 16 bit timer
                                 to 65,535.
                             </p>
@@ -121,11 +122,14 @@
                                 registers for "TC0", or Timer0.
                             </p>
 
-                            <p> TC0 is enabled by setting a "1" to the 5th bit of the
-                            Power Reduction Register. This register is labeled "PRR"
-                            in the datasheet (hint:Use ctrl+F to find it and read the rest)
-                            The bit is labeled "PRTIM0" in the datasheet. The screen cap below
-                            highlights how this is shown in the datasheet.</p>
+                            <p>
+                                TC0 is the name of one of the 8 bit timers.
+                                It is enabled by setting a "1" to the 5th bit of the
+                                Power Reduction Register. This register is labeled "PRR"
+                                in the datasheet (hint:Use ctrl+F to find it and read the rest)
+                                The bit is labeled "PRTIM0" in the datasheet. The screen cap below
+                                highlights how this is shown in the datasheet.
+                            </p>
                             
 
                             <div class="well">
