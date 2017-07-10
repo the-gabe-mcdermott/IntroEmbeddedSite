@@ -61,50 +61,25 @@
 </p>
 
                             <ul>
-                                <li>A brief recap of Period and Frequency</li>
-                                <li>Configuring a timer period, and what a "clock source" is.</li>
-                                <li>Table of possible prescaler outputs.</li>
-                                <li>Why you would need to care about configuring the timer period.</li>
+                                <li> Selecting a Clock Source and Prescaler</li>
+                                <li> How To Select A Source Clock on the Arduino Uno</li>
+                                <li> Possible Prescaler Output Frequencies </li>
+                                <li> Timer Resolution</li>
                             </ul>
 
-<h2> Quick Recap on Period and Frequency</h2>
-<p>
-    Remember that <strong> Period</strong> is
-    a term used to measure anything periodic,
-    or part of a repeating pattern. As a quick review,
-    the basic terms describing periodic systems are:
- </p>
-
-                            <ul>
-                                <li><strong>Period:</strong> Time between cycles</li>
-                                <li><strong>Frequency:</strong> Number of cycles in a second, measured in Hertz (Hz)</li>
-                            </ul>
-
-<p>
-    Also remember that Frequency is the inverse of the period.
-    That is, the longer the time between cycles, the fewer cycles
-    can take place in a second. This idea expressed in equation form is:
-</p>
-
-<div class="mathEquation">
-    P = Period
-    F = Frequency
-
-    P = 1/F 
-</div>
-
-<h2>How Timer Period is Determined</h2>
+<h2>Selecting a Clock Source and Prescaler</h2>
 
 <p>
     All timers use a
     <strong> timer source</strong> signal to
     tell them when to tick. This signal should
-    be an oscillating signal, and should have 
+    be periodic, and should have 
     a frequency within safe minimum and maximum
-    boundaries. (IE, The timer won't work if
-    the source signal is too fast or too slow)
-    Every time the source signal goes high,
-    (or some other predefined stage in the cycle)
+    boundaries.
+</p>
+
+<p>
+    Every time the source signal completes a cycle,
     the timer ticks once. Therefore, the frequency
     of the timer source signal, or <strong> timer
     source clock</strong>, determines the frequency
@@ -112,55 +87,51 @@
     will perform in a single second. 
 </p>
 
-      <h3>Selecting Different Timer Source Clocks</h3>                      
-                            <p>Most microcontrollers
-                            let you configure the timer to source from 
-                            a few different places.</p>
+<h3>Selecting Different Timer Source Clocks</h3>                      
+  <p>
+  Most microcontrollers
+  let you configure the timer to source from 
+  a few different places.
+</p>
 
-                            <p>
-                            You can select the clock signal the
-                            processor in using, sometimes known
-                            as the master clock.
-                            Then, the timer frequency will be 
-                                the same as the processor frequency.
-                            <p/>
-                            
-                            <p> 
-                                However, the frequency of the master
-                                clock may not meet your needs. It may be
-                                too fast, counting to the maximum counter
-                                value (255 for the 8-bit counter), too
-                                quickly to be useful in your application.
-                            </p>
+<p>
+  You can select the same clock signal the
+  processor is using, sometimes known
+  as the master clock. Then, the timer 
+  frequency will be the same as 
+  the processor frequency.
+<p/>
 
-                            <p>
-                                To fix this, you can choose to source the clock
-                                from an external pin. Then, you can wire a external
-                                oscillator onto the pin, selecting an oscillator
-                                that provides a more useful frequency.
-                                However, this adds more parts and more development
-                                time to the project.
-                            </p>
+<p>
+  Additionally, can choose to source the clock
+  from an external pin. Then, you can wire a external
+  oscillator onto the pin, selecting an oscillator
+  that provides a more useful frequency.
+  However, this adds more parts and more development
+  time to the project.
+</p>
 
-                            <p>
-                                Lastly, you can select from several <strong>
-                                prescalers </strong> that are built into the processor.
-                                Each prescaler divides the master clock frequency down by
-                                a specified amount. This lets you pick a frequency
-                                that closer meets your needs.
-                                This option is cheaper than
-                                adding an external oscillator, and gives you more control
-                                than simply accepting the master clock frequency.
-                            </p>
+<p>
+  Lastly, you can select from several <strong>
+  prescalers </strong> that are built into the processor.
+  Each prescaler divides the master clock frequency down by
+  a specified amount. This lets you pick a frequency
+  that closer meets your needs.
+  This option is cheaper than
+  adding an external oscillator, and gives you more control
+  than simply accepting the master clock frequency.
+</p>
 
-                            <h3> How To Select A Source Clock on the Arduino Uno</h3>
+
+
+                            <h2> How To Select A Source Clock on the Arduino Uno</h2>
                             <p>
                             Data-sheet section 19.9.2 
                             on register TCCR0B, bits CS0.
                             Table 19-10 describes how to select different clock sources 
                             with the microcontroller on the Arduino Uno.
                             </p>
-                    <h2> Possible Prescaler Output Frequencies </h2>
+                            <h2> Possible Prescaler Output Frequencies </h2>
                             <p>
                                The frequency that comes out of a prescaler depends
                                 on the Master Clock frequency that goes in. 
@@ -220,19 +191,20 @@
                             </table>
 
                             <h2>
-                                Why Bother Adjusting the Timer Frequency.
+                                Timer Resolution
                             </h2>
 
                             <p>
                                 The timer frequency directly controls the timer 
                                 <strong>Resolution</strong>, or how granular a
-                                chunk of time the timer can measure. 
+                                chunk of time the timer can measure. The higher
+                                the source clock frequency, the higher the resolution.
                             </p>
 
                             <p>
-                                Say your system was programmed to measure the 
+                                Say your system was programmed to measure the speed of
                                 a baseball flying in front of its sensors.
-                                Every timer tick, it is programmed to measure how
+                                Every timer tick, it takes a measurement of how
                                 far the baseball has traveled from its previous position 
                                 in the last tick.
                             </p>
@@ -240,20 +212,14 @@
                             <p>
                                 If the timer frequency is too high, too many ticks
                                 will occur in a second. Either too 
-                                may measurements will be made (which would be 
-                                inconvenient and perhaps waste power on unneeded 
-                                sensor reads), or the timer will roll over before
-                                the ball has left the sensors field of view
-                                (which could really foul things up)
+                                may measurements will be made: wasting space and power.
                             </p>
 
                             <p>
                                 If the timer frequency is too low, too few ticks
                                 will occur in a second. We might not take enough
                                 measurements of the ball while it passes in front
-                                of the sensor. If timer is really slow, we 
-                                may miss the ball entirely, as
-                                the ball passed by between ticks. 
+                                of the sensor.
                             </p>
 
                             <p>
