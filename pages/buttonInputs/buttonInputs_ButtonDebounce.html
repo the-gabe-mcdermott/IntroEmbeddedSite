@@ -40,33 +40,53 @@
                         <div class=chapterBody>
 
 
-                            <h1> Button Inputs </h1>
-						
-                            <p>
-                              This section explains how to read a push button from
-                              software on the Arduino.
-                            </p>
+<h1> Button Debounce</h1>
 
-                            <p>
-                            	This section covers the following topics:
-                            </p>
+<p>
+  Buttons wired into a microcontroller
+  for digital reading experience
+  a phenomenon called 
+  <strong> Button Bounce </strong>.
+  This is when upon being pressed,
+  the button does not close all at once.
+  Instead, the button "bounces" between
+  an open and closed state before 
+  fully transitioning to a closed state.
+</p>
+  
+<div class="default_diagram">
+  <img src="images/ButtonBounceImage.png"
+  alt="waveform alternates between voltage high and voltage low"
+  width="400"
+  height"220">
+</div>
 
-                            <ul>
-                                <li>
-                                  Logic Levels
-                                </li>
-                                <li>
-                                  Wiring the Button For Input
-				                        </li>
-                                <li>
-                                  Configuring the Pin For Input
-                                </li>
-                                <li>
-                                  Button Debounce
-                                </li>
-                            </ul>
+<p>
+  If a microcontroller reads the button state
+  in the middle of this transition period, it
+  is uncertain what the read result will be.
+  In order to fix this, all button reads should
+  be <strong> Debounced </strong>
+</p>
 
-                            <div class=license>
+<h2>How to De-bounce Button Reads </h2>
+
+<p>
+  To debounce, simply read the button twice, with
+  a fixed waiting time between reads that is greater
+  than the rated bounce time (typically given by the
+  manufacturer). 
+</p>
+<p>
+  If the two reads agree, the observed
+  state is "stable" and the read is good.
+  If the two reads disagree, the observed
+  state is "unstable", or perhaps the
+  result of electrical noise. The read
+  data should be ignored.
+</p>
+
+   		                      <div class=license>
                                 <p>
                                     &copy 2017
                                 </p>
