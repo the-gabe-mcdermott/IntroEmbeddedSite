@@ -1,5 +1,5 @@
   $(function () {
-                    $("#injectNavbarHere").load("navBar_ButtonInput.html", function () {
+                    $("#injectNavbarHere").load("navBar_ButtonInputs.html", function () {
                         //<!--Menu Toggle Script -- >
                         $("#navbarToggleButton").click(function (e) {
                             e.preventDefault();
