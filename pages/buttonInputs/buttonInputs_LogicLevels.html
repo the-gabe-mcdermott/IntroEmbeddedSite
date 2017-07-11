@@ -40,31 +40,50 @@
                         <div class=chapterBody>
 
 
-                            <h1> Button Inputs </h1>
-						
-                            <p>
-                              This section explains how to read a push button from
-                              software on the Arduino.
-                            </p>
+<h1> Logic Levels</h1>
+  
+<p>
+  When the Arduino reads a pin, it looks
+  for a voltage <strong> Logic Level </strong>
+  associated with either a "1" or a "0",
+  a "high", or a "low". Anything outside these
+  boundaries will read back with an uncertain
+  value.
+</p>		
 
-                            <p>
-                            	This section covers the following topics:
-                            </p>
+<h3> Data Sheet Table 32.2: Common DC Characteristics </h3>
 
-                            <ul>
-                                <li>
-                                  Logic Levels
-                                </li>
-                                <li>
-                                  Wiring the Button For Input
-				                        </li>
-                                <li>
-                                  Configuring the Pin For Input
-                                </li>
-                                <li>
-                                  Button Debounce
-                                </li>
-                            </ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vh</td>
+      <td>Voltage Input Low</td>
+      <td> -0.5 V </td>
+      <td> 0.3 V </td>
+    </tr>
+    <tr>
+      <td>Vl</td>
+      <td>Voltage Input High</td>
+      <td>0.7 V </td>
+      <td>Vcc + 0.5 V </td>
+    </tr>
+  </tbody>
+</table>			 
+
+<p>
+  So when wiring the button for the microcontroller to 
+  read, it important that the button open and closed
+  states each feed a different voltage logic level to the
+  input pin.
+</p>
 
                             <div class=license>
                                 <p>
