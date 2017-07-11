@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduction to Embedded Systems- Interrupts </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../css/simple-sidebar.css" rel="stylesheet">
+	<link href="../../css/textBodyStyles.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+<div id="injectNavbarHere"></div>
+
+
+<!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+						<div class=chapterBody>
+<h1> Interrupts </h1>
+
+<p>
+  There are two ways software can check
+  for events or input. They are 
+  <strong> Polling Driven Code</strong>
+  and 
+  <strong> Interrupt Driven Code. </strong>
+</p>	
+
+<h2> Polling Driven Code </h2>
+
+<p>
+  Polling code is code that regularly reads the
+  status of whatever event it is waiting for,
+  usually within an endless loop.
+</p>
+
+<p>
+  While this is fine for simple applications,
+  it begins to become insufficent when multiple
+  inputs need to be handled at the same time.
+</p>
+
+<p>
+  The other major downside is the limited
+  speed of response polling can provide.
+  If a button is pressed, the software will not
+  notice the event until the button read
+  portion of the loop comes around again.
+  In a complex program, this could be hundreds
+  of cycles later, which could generate a
+  noticable delay.
+</p>
+
+<h2> Interrupt Driven Code </h2>
+
+<p>
+  Interrupts are special events that trigger
+  the processor to stop running whatever
+  code it is currently running, and to 
+  breifly run a special function called
+  an 
+  <strong> Interrupt Service Rotuine </strong>
+  (or ISR), instead.
+  When the ISR is finished, the processor
+  resumes running the code it was running
+  before.
+</p>
+
+<p>
+  Interrupt triggers can be set up to
+  be tied to various kinds of events.
+  Change of logic levels on an input pin,
+  Timer overflow, completion of a serial
+  transmission, and many more.
+</p>
+
+						<div class=license>
+						<p>
+						&copy 2017
+						</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+            
+    <!-- Import Navbar -->
+    <script src="../../js/toggleNavbar.js"></script>
+
+		<!-- Google Anaylytics Script -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96461127-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>
+</body>
+</html>
