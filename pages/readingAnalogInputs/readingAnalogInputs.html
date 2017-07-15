@@ -41,8 +41,102 @@
 						<div class=chapterBody>
 <h1> Reading Analog Inputs</h1>
 
+  <p> 
+    This section covers the following topics: 
+  </p>
+
+  <ol>
+    <li> Digital Versus Analog Signals </li>
+    <li> How to Read Analog Signals </li>
+  </ol>
 
 
+  <h2> Digital Versus Analog Values </h2>
+  
+  <p>
+    Digital values are discrete, they fall
+    within well defined values. A digital
+    clock, for instance, can only 
+    display a fixed set of values.
+    It cannot display a value between
+    11:58 and 11:59. Even if the digital
+    clock diplay does display seconds, the
+    limitation persists at a smaller scale.
+    The digital representation cannot represent
+    an "in-between" state. 
+  </p>
+  
+  <p>
+    Analog Values are continuous. They
+    cannot be measured by discrete points.
+    The hands on an analog clock face can
+    indicate a time between 11:58, and 11:59,
+    but it doesn't point to a definite point
+    in between. 
+  <p>
+     
+  <p>
+    In computing, we utilize digital signals
+    to store values and perform logic.
+    In reality, the electricity we use to
+    power computer hardware is an analog voltage.
+    However, the computer system uses logic levels
+    to treat the analog voltage as a digital signal.
+    Anything within the low voltage level is interpreted
+    as a "0", anything within the high voltage level is
+    interrpreted as a "1", and anything else is an error.
+  </p>
+  
+  <p>
+    However, sometimes a computer will need to
+    read an analog signal. This is done with
+    an ADC.
+  </p>
+
+  <h2> How Computers Read Analog Signals </h2>
+  
+  <p> 
+    An ADC is an Analog to Digial Converter,   
+    a part that allows a digital based microcontroller
+    to make sense of an analog signal. 
+  </p>
+  
+  <p>
+    An ADC works by dividin the range of minimum
+    and maximum values into many discrete levels.
+    The number of levels is determined by the 
+    resolution of the ADC, given in bits.
+  </p>
+  
+  <p>
+    The diagram shows a 3-bit ADC, which 
+    divides the voltage range across 8 levels.
+    Each level is associated with a 3-bit number.
+  </p>
+
+  <h3> Calculating Voltage from Level Number </h3>
+
+  <p>
+    The Arduino Uno has a 10-bit ADC, which means
+    it has 1024 levels. 
+  </p>
+  
+  <p>
+    Say you are reading a voltage range between
+    0 and 5v.
+  </p>
+  
+  <p>
+    5 volts divided by 1024 levels yeilds
+    0.004883 Volts per level, or 4.883 mV
+    per level.
+  </p>
+
+  <p>
+    So a value of 5 read from the ADC 
+    would yeild 5*4.883 mv = 24.42 mv.
+  <p>
+  
 
 						<div class=license>
 						<p>
